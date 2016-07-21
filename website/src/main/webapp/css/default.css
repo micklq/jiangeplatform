@@ -1,0 +1,66 @@
+﻿/*
+	@eric
+*/
+/** {
+	font-size: 12px;
+	font-family: Tahoma, Verdana, 微软雅黑, 宋体
+}*/
+body {
+	background: #D2E0F2;
+	font-size: 12px;
+	font-family: Tahoma, Verdana, 微软雅黑, 宋体
+}
+.northTitle {
+	font-family:'微软雅黑';
+	font-size:24px;
+	font-weight:bold;
+	height:60px;
+	line-height:40px;
+}
+.loginInfo {
+	border:0px solid red;
+	display:block;
+	position:absolute;
+	bottom:5px;
+	right:10px;
+}
+#sysInfo{
+	border:0px solid red;
+	height:25px;
+	overflow:hidden;
+	position:absolute;
+	left:10px;
+}
+#sysVersion{
+	border:0px solid red;
+	height:25px;
+	width:200px;
+	text-align:left;
+	overflow:hidden;
+	position:absolute;
+	right:10px;
+}
+
+/**表单验证样式*/
+label.error{
+	color : red;
+}
+div.error{
+	color : red;
+	text-align : center;
+}
+/****定义table标签的form表单样式****/
+.form-body{
+	border-collapse:collapse;
+	border-width : 1px;
+	border-color : "#d3d3d3";
+}
+.form-body td {
+	border : 1px dotted #d3d3d3;
+	padding-left:10px;
+	height : 30px;
+}
+label.hint {
+	color : red;
+	padding-right : 2px;
+}
