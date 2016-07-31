@@ -18,6 +18,8 @@ public class Village extends BaseEntity {
      * 乡镇id
      */
     private Long countyid;   
+    
+    private int type;   
    
     /**
      * 乡镇名称
@@ -47,6 +49,15 @@ public class Village extends BaseEntity {
 
 	public void setCountyid(Long countyid) {
 		this.countyid = countyid;
+	}	
+	
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public String getCountyname() {

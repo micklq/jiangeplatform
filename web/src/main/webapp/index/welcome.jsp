@@ -23,12 +23,12 @@
 <div class="content_chose">
 	<div class="content_exit">
     	<ul>
-        	<li><a href="<%=basePath%>/firstnet/index"><img src="<%=basePath%>/image/fjwl.png"><span>分级网络</span></a></li>
-            <li><a href="<%=basePath%>/letter/index"><img src="<%=basePath%>/image/jfpt.png"><span>接访平台</span></a></li>
-            <li><a href="<%=basePath%>/caringpeople/index"><img src="<%=basePath%>/image/wwpt.png"><span>维稳平台</span></a></li>
-            <li><a href="<%=basePath%>/superv/index"><img src="<%=basePath%>/image/jdxx.png"><span>监督信息</span></a></li>
-            <li><a href="<%=basePath%>/county/index"><img src="<%=basePath%>/image/xxpt.png"><span>信息平台</span></a></li>
-            <li><a href="<%=basePath%>/user/userlist"><img src="<%=basePath%>/image/glpt.png"><span>管理平台</span></a></li>
+        	<li><a href="<%=basePath%>/firstnet/nlist"><img src="<%=basePath%>/image/fjwl.png"><span>分级网络</span></a></li>
+            <li><a href="<%=basePath%>/letter/nlist"><img src="<%=basePath%>/image/jfpt.png"><span>接访平台</span></a></li>
+            <li><a href="<%=basePath%>/caringpeople/nlist"><img src="<%=basePath%>/image/wwpt.png"><span>维稳平台</span></a></li>
+            <li><a href="<%=basePath%>/superv/nlist"><img src="<%=basePath%>/image/jdxx.png"><span>监督信息</span></a></li>
+            <li><a href="<%=basePath%>/areamanage/nlist"><img src="<%=basePath%>/image/xxpt.png"><span>信息平台</span></a></li>
+            <li><a href="<%=basePath%>/user/userlist"><img src="<%=basePath%>/image/glpt.png"><span>管理平台</span></a></li>            
         </ul>
     </div>
 </div>

@@ -72,5 +72,15 @@ public class FirstNetworkController extends CRUDController<FirstNetwork, Long> {
 	        return respBodyWriter.toSuccess(p);
 	    }
 	
+	@RequestMapping("nlist")
+	public String nlist(){
+		return "firstnet/nlist";
+	}	
+	
+	@RequestMapping("nsave")
+	public String nsave(){
+		return "firstnet/nsave";
+	}	
+	
 
 }

@@ -19,41 +19,55 @@ public class DemoTest  {
 	
 	
 
-	@SuppressWarnings({ "null", "unused" })
+//	@SuppressWarnings({ "null", "unused" })
+//	@Test
+//	public void splitTest() 
+//	{
+//			String str ="1,2,3,4,5,6";
+//			String[] ary = str.split(",");
+//			ArrayList<Long> result = new ArrayList<Long>();
+//			System.out.println("arylen:"+ary.length);
+//			if(ary.length>0){
+//				
+//				for(int i=0; i<ary.length; i++){
+//					
+//					Long oo = Long.parseLong(ary[i]);
+//					if(oo!=null&&oo>0)
+//					{
+//						System.out.println("oo1:"+oo);						
+//						result.add(oo);
+//					}
+//			
+//				
+//			}
+//			}
+//			if(result.size()>0)
+//			{
+//				
+//				for(Long o :result){
+//					
+//					System.out.println(o);
+//				}
+//				
+//				
+//			}
+//		    
+//		
+//	}
+	
 	@Test
-	public void splitTest() 
+	public void modelTest() 
 	{
-			String str ="1,2,3,4,5,6";
-			String[] ary = str.split(",");
-			ArrayList<Long> result = new ArrayList<Long>();
-			System.out.println("arylen:"+ary.length);
-			if(ary.length>0){
-				
-				for(int i=0; i<ary.length; i++){
-					
-					Long oo = Long.parseLong(ary[i]);
-					if(oo!=null&&oo>0)
-					{
-						System.out.println("oo1:"+oo);						
-						result.add(oo);
-					}
-			
-				
-			}
-			}
-			if(result.size()>0)
-			{
-				
-				for(Long o :result){
-					
-					System.out.println(o);
-				}
-				
-				
-			}
-		    
-		
+		int dataCount =12;
+		int dataPage = (int) (12/12);
+		System.out.println("dataPage:" +dataPage);
+		if(dataCount%12==0){
+			System.out.println("dataCount:" +dataCount);
+			dataPage= dataPage-1; //分页整除 减一 以下再加一
+		}
+		System.out.println("dataPage:" +dataPage);
 	}
+	
 	
 	
 	

@@ -27,16 +27,25 @@
         <pattern>/*ruser/registcount*</pattern> 
     </excludes>
 
-    <decorator name="main" page="main_new.jsp">
+    <decorator name="main" page="main.jsp">
         <pattern>/*</pattern>
     </decorator>
+    <decorator name="main1" page="main_new.jsp">
+        <pattern>/*nlist*</pattern>
+    </decorator>
+    <decorator name="main2" page="main_new.jsp">
+        <pattern>/*ndetail*</pattern>
+    </decorator>
+     <decorator name="main3" page="main_new.jsp">
+        <pattern>/*nsave*</pattern>
+    </decorator>
+    
     <decorator name="dialog" page="videoEdit.jsp">
         <pattern>/*video/modify_ui*</pattern>
     </decorator>
     <decorator name="main_top" page="main_top.jsp">
         <pattern>/*video/popUpload*</pattern>
         <pattern>/*activity/showRemoveActivityList*</pattern>
-        <pattern>/*video/showUserVideos*</pattern>
-        
+        <pattern>/*video/showUserVideos*</pattern>        
     </decorator>
 </decorators>

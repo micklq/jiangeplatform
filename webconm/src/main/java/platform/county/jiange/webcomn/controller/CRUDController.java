@@ -163,8 +163,7 @@ public abstract class CRUDController<T extends BaseEntity, ID extends Serializab
      * @param id the id
      * @return the request result
      */
-    @RequestMapping(value = {"/delete"},
-            method = {RequestMethod.GET, RequestMethod.DELETE,RequestMethod.POST})
+    @RequestMapping(value = {"/delete"}, method = {RequestMethod.GET, RequestMethod.DELETE,RequestMethod.POST})
     @ResponseBody
     public RespBody delete(@RequestParam ID id) {
         T entity = baseService.find(id);

@@ -1,5 +1,6 @@
 package platform.county.jiange.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,22 +11,32 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import platform.county.jiange.model.Filter;
+import platform.county.jiange.model.constants.ResponseCode;
 import platform.county.jiange.model.entity.AreaManage;
+import platform.county.jiange.model.entity.BaseEntity;
 import platform.county.jiange.model.entity.County;
 import platform.county.jiange.model.entity.OfficeUser;
+import platform.county.jiange.model.entity.OperationLog;
 import platform.county.jiange.model.entity.OrgPost;
 import platform.county.jiange.model.entity.Organization;
+import platform.county.jiange.model.entity.School;
+import platform.county.jiange.model.enums.OfficeUserType;
 import platform.county.jiange.service.BaseService;
 import platform.county.jiange.service.cache.JedisService;
 import platform.county.jiange.service.OfficeUserService;
 import platform.county.jiange.service.OrgPostService;
 import platform.county.jiange.service.OrganizationService;
 import platform.county.jiange.webcomn.RespBody;
+import platform.county.jiange.webcomn.U;
 import platform.county.jiange.webcomn.controller.CRUDController;
 
 /**
@@ -88,6 +99,102 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 	        return respBodyWriter.toSuccess(p);
 	    }
 	
+	
+	    @RequestMapping(value = {"/create"}, method = {RequestMethod.POST, RequestMethod.PUT})
+	    @ResponseBody
+	    @Override
+	    public RespBody create(OfficeUser entity) {
+	        if (!validator(entity, BaseEntity.Save.class)) {
+	            return respBodyWriter.toError(ResponseCode.CODE_455.toString(),ResponseCode.CODE_455.toCode());
+	        }
+	        entity.setOthers(OfficeUserType.getByValue(entity.getOtype()).getName());
+	        
+	        baseService.save(entity);
+	        this.operationLogService.save(new OperationLog(log_meduleType, "添加", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "添加"+entity.getClass().getSimpleName()));
+	        return respBodyWriter.toSuccess(entity);
+	    }
+	    
+	    @RequestMapping(value = {"/update"},method = {RequestMethod.POST, RequestMethod.PUT})
+	    @ResponseBody
+	    @Override
+	    public RespBody update(OfficeUser entity) {
+	        if (!validator(entity, BaseEntity.Update.class)) {
+	            return respBodyWriter.toError("",ResponseCode.CODE_455.toCode());
+	        }
+	        entity.setOthers(OfficeUserType.getByValue(entity.getOtype()).getName());
+	        baseService.update(entity);
+	        this.operationLogService.save(new OperationLog(log_meduleType, "更新", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "更新"+entity.getClass().getSimpleName()));
+	        return respBodyWriter.toSuccess(entity);
+	    }
+	
+	@RequestMapping("nlist")
+	public String nlist(@RequestParam(value="page", required=false, defaultValue="1") Integer page,ModelMap model){
+		int dataCount = (int)officeUserService.count();		
+		int dataPage = (int) (dataCount/12);
+		if(dataCount%12==0){
+			dataPage= dataPage-1; //分页整除 减一 以下再加一
+		}
+		int pageCount = dataPage+1;	
+		
+		if(page<=0)
+		{
+			page = 1;
+		}	
+		if(page>=pageCount){
+			page=pageCount;
+		}
+		int prePage=((page-1)>0)?(page-1):1;
+		int nextPage=((page+1)>pageCount)?pageCount:(page+1);
+		
+		Pageable pr = new PageRequest(page, 12, new Sort(Direction.DESC,"id"));
+        Page<OfficeUser> list = officeUserService.findAll(pr, null); 
+        List<OfficeUser> rlist = new ArrayList<OfficeUser>();
+        if(list!=null&& list.getSize()>0)
+        {        	
+        	 rlist = list.getContent();
+        } 
+        for(OfficeUser o: rlist){	  
+	    	   
+        	 if(o.getOrgid()!=null&&o.getOrgid()>0){
+	    		   Organization item = organizationService.find(o.getOrgid());
+		    	   if(item!=null){
+		    		   o.setOrgname(item.getName());  
+		    	   }
+	    	   }  
+	    	   
+	    	   if(o.getPostid()!=null&&o.getPostid()>0){
+	    		   OrgPost item = orgPostService.find(o.getPostid());
+		    	   if(item!=null){
+		    		   o.setPostname(item.getName());  
+		    	   }
+	    	   }
+	       }
+        model.addAttribute("prePage", prePage);
+        model.addAttribute("nextPage", nextPage);
+        model.addAttribute("currentPage", page);	
+        model.addAttribute("pageCount", pageCount);	
+		model.put("ouserList", rlist);			
+		
+		return "ouser/nlist";
+	}		
+	
+	@RequestMapping("nsave")
+	public String nsave(@RequestParam(value="id", required=false, defaultValue="0") Long id,ModelMap map){
+		
+		OfficeUser ouser = new OfficeUser();		
+		if(id!=null&&id>0)
+		{
+			ouser = officeUserService.find(id);	
+		}
+		map.addAttribute("ouser", ouser);			
+	
+		List<Organization> list=organizationService.findAll();		
+		map.put("orgList", list);		
+		List<OrgPost> plist=orgPostService.findAll();	
+		map.put("orgPostList", plist);	
+		
+		return "ouser/nsave";
+	}
 		
 	
 

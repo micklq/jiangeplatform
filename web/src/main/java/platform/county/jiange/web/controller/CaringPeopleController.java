@@ -50,5 +50,15 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 		return "caringpeople/index";
 	}	
 	
+	@RequestMapping("nlist")
+	public String nlist(){
+		return "caringpeople/nlist";
+	}	
+	
+	@RequestMapping("nsave")
+	public String nsave(){
+		return "caringpeople/nsave";
+	}	
+	
 
 }

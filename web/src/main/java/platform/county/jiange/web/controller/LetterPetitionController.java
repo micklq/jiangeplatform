@@ -53,5 +53,20 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 		return "letter/index";
 	}	
 	
+	@RequestMapping("ndetail")
+	public String ndetail(){
+		return "letter/ndetail";
+	}
+	
+	@RequestMapping("nlist")
+	public String nlist(){
+		return "letter/nlist";
+	}
+	
+	@RequestMapping("nsave")
+	public String nsave(){
+		return "letter/nsave";
+	}	
+	
 
 }

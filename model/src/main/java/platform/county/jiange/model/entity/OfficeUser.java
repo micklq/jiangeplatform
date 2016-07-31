@@ -53,6 +53,10 @@ public class OfficeUser extends BaseEntity {
     @Column(length = 200)
     private String others;
     
+    
+    /***用户类型***/
+    private Integer otype;
+    
     /***所属组织id***/
     private Long orgid; 
     /***所属职务Id***/
@@ -129,8 +133,9 @@ public class OfficeUser extends BaseEntity {
 
 	public void setPostname(String postname) {
 		this.postname = postname;
-	}
+	}	
 
+	
 	public String getOthers() {
 		return others;
 	}
@@ -138,6 +143,16 @@ public class OfficeUser extends BaseEntity {
 	public void setOthers(String others) {
 		this.others = others;
 	}
+
+	public Integer getOtype() {
+		return otype;
+	}
+
+	public void setOtype(Integer otype) {
+		this.otype = otype;
+	}
+	
+	
 	
    
 }

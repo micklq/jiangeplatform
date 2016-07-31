@@ -53,5 +53,20 @@ public class SupervisionController extends CRUDController<Supervision, Long> {
 		return "superv/index";
 	}	
 	
+	@RequestMapping("ndetail")
+	public String ndetail(){
+		return "superv/ndetail";
+	}
+	
+	@RequestMapping("nlist")
+	public String nlist(){
+		return "superv/nlist";
+	}
+	
+	@RequestMapping("nsave")
+	public String nsave(){
+		return "superv/nsave";
+	}	
+	
 
 }
