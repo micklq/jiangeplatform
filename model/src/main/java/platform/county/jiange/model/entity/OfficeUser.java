@@ -50,7 +50,7 @@ public class OfficeUser extends BaseEntity {
     /**
      * 扩展信息 如 党组书记 /党组成员	
      */
-    @Column(length = 200)
+    @Transient
     private String others;
     
     
@@ -62,12 +62,18 @@ public class OfficeUser extends BaseEntity {
     /***所属职务Id***/
     private Long postid;
     
+    /***所在乡镇Id***/
+    private Long locationid;
+    
     
     @Transient
     private String orgname; 
     
     @Transient
     private String postname;
+    
+    @Transient
+    private String location;
     
     /**责任点？？？*/
     
@@ -136,6 +142,22 @@ public class OfficeUser extends BaseEntity {
 	}	
 
 	
+	public Long getLocationid() {
+		return locationid;
+	}
+
+	public void setLocationid(Long locationid) {
+		this.locationid = locationid;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public String getOthers() {
 		return others;
 	}

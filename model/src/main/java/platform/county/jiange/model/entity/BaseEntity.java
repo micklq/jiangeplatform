@@ -68,8 +68,8 @@ public abstract class BaseEntity implements Serializable {
 		return creatorId;
 	}
 
-	public void setCreatorId(Long creatorId) {
-		this.creatorId = creatorId;
+	public void setCreatorId(Long creatorId) {		
+	 this.creatorId = creatorId;		
 	}
  
 

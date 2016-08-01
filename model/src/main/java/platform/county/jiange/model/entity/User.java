@@ -81,6 +81,8 @@ public class User extends BaseEntity {
     @Column(length = 128)
     private String loginIp;
     
+    
+    private Long officeid;
 
 
     @ManyToMany(fetch = FetchType.LAZY, targetEntity = Role.class)
@@ -216,7 +218,14 @@ public class User extends BaseEntity {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-    
+
+	public Long getOfficeid() {
+		return officeid;
+	}
+
+	public void setOfficeid(Long officeid) {
+		this.officeid = officeid;
+	}
 
 	@Override
     public boolean equals(Object o) {

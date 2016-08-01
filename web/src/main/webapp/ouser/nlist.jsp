@@ -32,10 +32,11 @@
                     <th>ID</th>     
                     <th>姓名</th>
                     <th>电话</th>
-                    <th>邮箱</th>
+                    <th>邮箱</th>                    
                     <th>科室</th>
                     <th>职务</th>
-                    <th>说明</th>
+                    <th>所在乡镇</th>
+                    <th>分类</th>
                     <th>操作</th>
                 </tr>                
                 <c:forEach items="${ouserList}" var="p">                
@@ -46,6 +47,7 @@
                     <td>${p.email}</td>
                     <td>${p.orgname}</td>
                     <td>${p.postname}</td>
+                    <td>${p.location}</td>
                     <td>${p.others}</td>                    
                     <td>
                     <a href="${pageContext.request.contextPath}/ouser/nsave?id=${p.id}">修改 </a>

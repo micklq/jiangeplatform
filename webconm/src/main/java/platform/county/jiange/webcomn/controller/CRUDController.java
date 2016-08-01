@@ -119,6 +119,8 @@ public abstract class CRUDController<T extends BaseEntity, ID extends Serializab
         if (!validator(entity, BaseEntity.Save.class)) {
             return respBodyWriter.toError(ResponseCode.CODE_455.toString(),ResponseCode.CODE_455.toCode());
         }
+        
+        entity.setCreatorId(U.getUid());        
         baseService.save(entity);
         this.operationLogService.save(new OperationLog(log_meduleType, "添加", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "添加"+entity.getClass().getSimpleName()));
         return respBodyWriter.toSuccess(entity);
@@ -151,7 +153,7 @@ public abstract class CRUDController<T extends BaseEntity, ID extends Serializab
         if (!validator(entity, BaseEntity.Update.class)) {
             return respBodyWriter.toError("",ResponseCode.CODE_455.toCode());
         }
-
+        entity.setCreatorId(U.getUid());  
         baseService.update(entity);
         this.operationLogService.save(new OperationLog(log_meduleType, "更新", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "更新"+entity.getClass().getSimpleName()));
         return respBodyWriter.toSuccess(entity);

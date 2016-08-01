@@ -31,6 +31,7 @@ import platform.county.jiange.model.entity.Organization;
 import platform.county.jiange.model.entity.School;
 import platform.county.jiange.model.enums.OfficeUserType;
 import platform.county.jiange.service.BaseService;
+import platform.county.jiange.service.CountyService;
 import platform.county.jiange.service.cache.JedisService;
 import platform.county.jiange.service.OfficeUserService;
 import platform.county.jiange.service.OrgPostService;
@@ -61,6 +62,10 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 	@Resource(name = "orgPostService")
 	private OrgPostService orgPostService;
 	
+	@Resource(name = "countyService")
+	private CountyService countyService;	
+	
+	
 	@Resource(name = "officeUserService")
 	@Override
 	public void setBaseService(BaseService<OfficeUser, Long> baseService) {
@@ -79,7 +84,9 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 	        
 	        Page<OfficeUser> p = officeUserService.findAll(pr, filters);
 	        
-	       for(OfficeUser o: p.getContent()){	  
+	       for(OfficeUser o: p.getContent()){	
+	    	   
+	    	   o.setOthers(OfficeUserType.getByValue(o.getOtype()).getName());
 	    	   
 	    	   if(o.getOrgid()!=null&&o.getOrgid()>0){
 	    		   Organization item = organizationService.find(o.getOrgid());
@@ -95,36 +102,17 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 		    	   }
 	    	   }
 	    	   
+	    	   if(o.getLocationid()!=null&&o.getLocationid()>0){
+	    		   
+			    	County county = countyService.find(o.getLocationid());  
+			    	if(county!=null){
+			    		o.setLocation(county.getName()); 
+			    	}	    		        
+		    		      	  	 
+	 	  	   }	   
+	    	   
 	       } 
 	        return respBodyWriter.toSuccess(p);
-	    }
-	
-	
-	    @RequestMapping(value = {"/create"}, method = {RequestMethod.POST, RequestMethod.PUT})
-	    @ResponseBody
-	    @Override
-	    public RespBody create(OfficeUser entity) {
-	        if (!validator(entity, BaseEntity.Save.class)) {
-	            return respBodyWriter.toError(ResponseCode.CODE_455.toString(),ResponseCode.CODE_455.toCode());
-	        }
-	        entity.setOthers(OfficeUserType.getByValue(entity.getOtype()).getName());
-	        
-	        baseService.save(entity);
-	        this.operationLogService.save(new OperationLog(log_meduleType, "添加", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "添加"+entity.getClass().getSimpleName()));
-	        return respBodyWriter.toSuccess(entity);
-	    }
-	    
-	    @RequestMapping(value = {"/update"},method = {RequestMethod.POST, RequestMethod.PUT})
-	    @ResponseBody
-	    @Override
-	    public RespBody update(OfficeUser entity) {
-	        if (!validator(entity, BaseEntity.Update.class)) {
-	            return respBodyWriter.toError("",ResponseCode.CODE_455.toCode());
-	        }
-	        entity.setOthers(OfficeUserType.getByValue(entity.getOtype()).getName());
-	        baseService.update(entity);
-	        this.operationLogService.save(new OperationLog(log_meduleType, "更新", entity.getId().toString(), entity.getClass().getSimpleName(), U.getUid(), U.getUname(), "更新"+entity.getClass().getSimpleName()));
-	        return respBodyWriter.toSuccess(entity);
 	    }
 	
 	@RequestMapping("nlist")
@@ -154,7 +142,7 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
         	 rlist = list.getContent();
         } 
         for(OfficeUser o: rlist){	  
-	    	   
+        	 o.setOthers(OfficeUserType.getByValue(o.getOtype()).getName());
         	 if(o.getOrgid()!=null&&o.getOrgid()>0){
 	    		   Organization item = organizationService.find(o.getOrgid());
 		    	   if(item!=null){
@@ -168,6 +156,14 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 		    		   o.setPostname(item.getName());  
 		    	   }
 	    	   }
+	    	   if(o.getLocationid()!=null&&o.getLocationid()>0){
+	    		   
+			    	County county = countyService.find(o.getLocationid());  
+			    	if(county!=null){
+			    		o.setLocation(county.getName()); 
+			    	}	    		        
+		    		      	  	 
+	 	  	   }	
 	       }
         model.addAttribute("prePage", prePage);
         model.addAttribute("nextPage", nextPage);
@@ -191,7 +187,12 @@ public class OfficeUserController extends CRUDController<OfficeUser, Long> {
 		List<Organization> list=organizationService.findAll();		
 		map.put("orgList", list);		
 		List<OrgPost> plist=orgPostService.findAll();	
-		map.put("orgPostList", plist);	
+		map.put("orgPostList", plist);
+		
+		List<Filter> filters = new ArrayList<Filter>();
+		//filters.add(new Filter("parentid",1L));
+		List<County> clist=countyService.findAll(0,500,filters,new Sort(Sort.Direction.ASC,"id"));	
+		map.put("countyList", clist);	
 		
 		return "ouser/nsave";
 	}

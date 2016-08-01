@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum OfficeUserType {
-	None("无", 0),Secretary("党组书记", 1),PartyMembers("党组成员", 2) ;
+	None("无", 0),Secretary("党组书记", 1),PartyMembers("党组成员", 2) ,LiaisonMan("联络员", 3) ;
 
 	private String name;
 

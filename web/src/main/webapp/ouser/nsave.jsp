@@ -68,7 +68,17 @@
                             </td>
                         </tr>
                         <tr>
-                         <td align="right">说明：</td>
+                         <td align="right">所在乡镇：</td>
+                         <td>                               
+                         <select id="locationid" class="easyui-combobox easyui-validatebox" name="locationid" required="true" style="width:220px">
+				             <c:forEach items="${countyList}" var="item" >
+				             <option value="${item.id}">${item.name}</option>
+				             </c:forEach>
+				          </select> 
+                            </td>
+                        </tr>
+                        <tr>
+                         <td align="right">分类：</td>
                          <td>                                                      
                          <select id="otype" class="easyui-combobox easyui-validatebox" name="otype" required="true" style="width:220px">
 				           <% for( OfficeUserType type : OfficeUserType.values() ){ %>
@@ -89,6 +99,7 @@
 <script type="text/javascript">
 $("#orgid").val("${requestScope.ouser.orgid}");
 $("#postid").val("${requestScope.ouser.postid}");
+$("#locationid").val("${requestScope.ouser.locationid}");
 $("#otype").val("${requestScope.ouser.otype}");
 function back(){
 	location.href="${pageContext.request.contextPath}/ouser/nlist";
