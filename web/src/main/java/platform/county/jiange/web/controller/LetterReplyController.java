@@ -39,14 +39,7 @@ public class LetterReplyController extends CRUDController<LetterReply, Long> {
 		this.baseService = baseService;
 	}
 	
-	@RequestMapping("letterReplylistAjax")
-	@ResponseBody
-	public List letterReplyList() {
-		List<LetterReply> rlist=letterReplyService.findAll();
-		//jedisService.setValueToList("letterReply", "aaa","bbb");
-		//List<String> list = jedisService.getValuesFromList("letterReply");
-		return rlist;
-	}
+	
 	
 	@RequestMapping("index")
 	public String index(){

@@ -30,7 +30,6 @@ import platform.county.jiange.model.entity.OperationLog;
 import platform.county.jiange.model.entity.Role;
 import platform.county.jiange.model.entity.Ruser;
 import platform.county.jiange.model.entity.User;
-import platform.county.jiange.model.enums.ModuleType;
 import platform.county.jiange.service.BaseService;
 import platform.county.jiange.service.RoleService;
 import platform.county.jiange.service.RuserService;
@@ -253,7 +252,7 @@ public class UserController extends CRUDController<User, Long>{
 		}
 		user.setPassword(DigestUtils.md5Hex(new_password));
 		this.UserService.update(user);
-		this.operationLogService.save(new OperationLog(ModuleType.捕梦后台.getName(), "修改", id+"", "User", U.getUid(), U.getUname(), "修改密码"));
+		this.operationLogService.save(new OperationLog("后台修改", "修改", id+"", "User", U.getUid(), U.getUname(), "修改密码"));
 		return this.respBodyWriter.toSuccess();
 	}
 	

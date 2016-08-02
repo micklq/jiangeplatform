@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,57 +22,30 @@
                             <dt class="flBox">请选择检查点<span></span></dt>
                             <dd>
                                 <ul>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
+                                  <c:forEach items="${countyList}" var="item" >				             
+				                   <li><a href="#" idx="${item.id}">${item.name}</a></li>
+				                   </c:forEach>  
                                 </ul>
                             </dd>
                         </dl>
                     </div>
                     <div class="r prev_next">
-                    	<a href="javascript:;">上一页</a>
-                        <span>1/2</span>
-                        <a href="javascript:;">下一页</a>
+                    	<a href="${pageContext.request.contextPath}/letter/nlist?page=${requestScope.letterPage.prePage}">上一页</a>
+                        <span>${requestScope.currentPage}/${requestScope.letterPage.pageCount}</span>
+                        <a href="${pageContext.request.contextPath}/letter/nlist?page=${requestScope.letterPage.nextPage}">下一页</a>
                     </div>
                     <div style="height:15px;clear:both;"></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="table_lisrts" style="border-top:solid 1px #e3e3e3;">
+                        <c:forEach items="${letterList}" var="p" >		
                         <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
+                        	<td>${p.id}</td>
+                            <td>${p.officename}</td>
+                            <td style="text-align:left;" width="40%">${p.title}</td>
+                            <td>${p.location}</td>
+                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">${p.eventtime}</td>
                         </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安普安真田家祥普安真田家祥普安真田家祥真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
+                        </c:forEach> 
+                        
                     </table>
                     <div class="five_btn three_contact">
                     	<a href="javascript:;">QQ接访</a>
@@ -92,71 +66,31 @@
                             <dt class="flBox">请选择检查点<span></span></dt>
                             <dd>
                                 <ul>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
+                                   <c:forEach items="${countyList}" var="item" >				             
+				                   <li><a href="#" idx="${item.id}">${item.name}</a></li>
+				                   </c:forEach>  
                                 </ul>
                             </dd>
                         </dl>
                     </div>
                     <div class="r prev_next">
-                    	<a href="javascript:;">上一页</a>
-                        <span>1/2</span>
-                        <a href="javascript:;">下一页</a>
+                    	<a href="${pageContext.request.contextPath}/letter/nlist?page1=${requestScope.liaisonManPage.prePage}">上一页</a>
+                        <span>${requestScope.currentPage}/${requestScope.liaisonManPage.pageCount}</span>
+                        <a href="${pageContext.request.contextPath}/letter/nlist?page1=${requestScope.liaisonManPage.nextPage}">下一页</a>
                     </div>
                     <div style="height:15px;clear:both;"></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="table_lisrts" style="border-top:solid 1px #e3e3e3;">
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安普安真田家祥普安真田家祥普安真田家祥真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td style="text-align:left;" width="40%">普安真田家祥普安真田家祥普安真田家祥</td>
-                            <td>普安真田家祥 三队</td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">07月15号</td>
-                        </tr>
+                        <c:forEach items="${liaisonManList}" var="p">              
+                       <tr>                    
+                       <td>${p.id}</td>
+                       <td>${p.name}</td>                               
+                       <td>${p.phone}</td>
+                       <td>${p.email}</td>
+                       <td>${p.orgname}</td>
+                       <td>${p.postname}</td>
+                       <td>${p.location}</td>                
+                      </tr>
+                      </c:forEach> 
                     </table>
                 </div>
             </div>
