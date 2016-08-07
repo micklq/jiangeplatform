@@ -51,7 +51,7 @@
                     	<a href="javascript:;">QQ接访</a>
                         <a href="javascript:;">网上举报</a>
                         <a href="javascript:;">邮箱接访</a>
-                        <a href=""${pageContext.request.contextPath}/letter/nsave">信息录入</a>
+                        <a href="${pageContext.request.contextPath}/letter/nsave">信息录入</a>
                     </div>
                 </div>
             </div>
