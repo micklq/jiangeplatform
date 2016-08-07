@@ -68,7 +68,7 @@
                             <dd>
                                 <ul>
                                    <c:forEach items="${countyList}" var="item" >				             
-				                   <li><a href="${pageContext.request.contextPath}/letter/nlist?cid=${item.id}">${item.name}</a></li>
+				                   <li><a href="${pageContext.request.contextPath}/letter/nlist?cid1=${item.id}">${item.name}</a></li>
 				                   </c:forEach>  
                                 </ul>
                             </dd>
