@@ -202,6 +202,7 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 		if (page >= pageCount) {
 			page = pageCount;
 		}
+		pageInfo.setDataCount(dataCount);
 		pageInfo.setPrePage(((page - 1) > 0) ? (page - 1) : 1);
 		pageInfo.setNextPage(((page + 1) > pageCount) ? pageCount : (page + 1));
 		pageInfo.setCurrentPage(page);
@@ -263,6 +264,7 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 		if (page >= pageCount) {
 			page = pageCount;
 		}
+		pageInfo.setDataCount(dataCount);
 		pageInfo.setPrePage(((page - 1) > 0) ? (page - 1) : 1);
 		pageInfo.setNextPage(((page + 1) > pageCount) ? pageCount : (page + 1));
 		pageInfo.setCurrentPage(page);

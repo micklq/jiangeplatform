@@ -15,7 +15,7 @@
     <div class="content_right3">
     	<div class="content_left_con3">
             <div class="tab_select_box">
-            	<h3 class="title_jiandu_font">接访信息（共5件）</h3>
+            	<h3 class="title_jiandu_font">接访信息（共${requestScope.letterPage.dataCount}件）</h3>
             	<div class="select_cont_set">
                 	<div class="l select_both">
                         <dl class="select_Set fl">
@@ -23,7 +23,7 @@
                             <dd>
                                 <ul>
                                   <c:forEach items="${countyList}" var="item" >				             
-				                   <li><a href="#" idx="${item.id}">${item.name}</a></li>
+				                   <li><a href="${pageContext.request.contextPath}/letter/nlist?cid=${item.id}">${item.name}</a></li>
 				                   </c:forEach>  
                                 </ul>
                             </dd>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="r prev_next">
                     	<a href="${pageContext.request.contextPath}/letter/nlist?page=${requestScope.letterPage.prePage}">上一页</a>
-                        <span>${requestScope.currentPage}/${requestScope.letterPage.pageCount}</span>
+                        <span>${requestScope.letterPage.currentPage}/${requestScope.letterPage.pageCount}</span>
                         <a href="${pageContext.request.contextPath}/letter/nlist?page=${requestScope.letterPage.nextPage}">下一页</a>
                     </div>
                     <div style="height:15px;clear:both;"></div>
@@ -51,6 +51,7 @@
                     	<a href="javascript:;">QQ接访</a>
                         <a href="javascript:;">网上举报</a>
                         <a href="javascript:;">邮箱接访</a>
+                        <a href=""${pageContext.request.contextPath}/letter/nsave">信息录入</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +68,7 @@
                             <dd>
                                 <ul>
                                    <c:forEach items="${countyList}" var="item" >				             
-				                   <li><a href="#" idx="${item.id}">${item.name}</a></li>
+				                   <li><a href="${pageContext.request.contextPath}/letter/nlist?cid=${item.id}">${item.name}</a></li>
 				                   </c:forEach>  
                                 </ul>
                             </dd>
@@ -75,7 +76,7 @@
                     </div>
                     <div class="r prev_next">
                     	<a href="${pageContext.request.contextPath}/letter/nlist?page1=${requestScope.liaisonManPage.prePage}">上一页</a>
-                        <span>${requestScope.currentPage}/${requestScope.liaisonManPage.pageCount}</span>
+                        <span>${requestScope.liaisonManPage.currentPage}/${requestScope.liaisonManPage.pageCount}</span>
                         <a href="${pageContext.request.contextPath}/letter/nlist?page1=${requestScope.liaisonManPage.nextPage}">下一页</a>
                     </div>
                     <div style="height:15px;clear:both;"></div>
