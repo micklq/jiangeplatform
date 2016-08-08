@@ -6,44 +6,34 @@
 <%
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 %>
-<title>欢迎访问剑阁网络管理平台-科室管理</title>
+<title>欢迎访问剑阁网络管理平台-维稳人员分类管理</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <!--content-->
-<div class="content_box">
-    <ul class="table_add">
-        <li><a href="${pageContext.request.contextPath}/areamanage/nlist">片区管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/org/nlist" class="hover">科室管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
-        <li><a href="${pageContext.request.contextPath}/ouser/nlist">联络员登记</a></li>     
-        <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li>     
-    </ul>
+<div class="content_box">    
     <div class="tab_select_box3 ClearFix">
-        <h3 class="title_jiandu_font" style="border-bottom:none;">科室管理<a href="${pageContext.request.contextPath}/org/nsave?id=0" class="add_tianji_keshi">添加科室+</a></h3>
-        <ul class="tab_nav_sfs">
-        	<li><a class="hover" href="${pageContext.request.contextPath}/org/nlist">科室</a></li>            
-            <li><a href="${pageContext.request.contextPath}/orgpost/nlist">职务</a></li>            
-        </ul>
+        <h3 class="title_jiandu_font" style="border-bottom:none;">维稳人员分类<a href="${pageContext.request.contextPath}/caringcategory/nsave?id=0" class="add_tianji_keshi">添加分类+</a></h3>
+        
         <div class="box_tabls">
          <div class="r prev_next" style="margin:10px;">
-          <a href="${pageContext.request.contextPath}/org/nlist?page=${requestScope.prePage}">上一页</a>
+          <a href="${pageContext.request.contextPath}/caringcategory/nlist?page=${requestScope.prePage}">上一页</a>
           <span>${requestScope.currentPage}/${requestScope.pageCount}</span>
-          <a href="${pageContext.request.contextPath}/org/nlist?page=${requestScope.nextPage}">下一页</a>
+          <a href="${pageContext.request.contextPath}/caringcategory/nlist?page=${requestScope.nextPage}">下一页</a>
          </div>
         <div class="forem_box_set1 tabse_se">
             <table cellpadding="0" cellspacing="0" class="tab_padding_t1">
                 <tr>   
-                    <th>科室Id</th>                      
-                    <th>科室名称</th>
+                    <th>Id</th>                      
+                    <th>名称</th>
                     <th>操作</th>
                 </tr>
-                 <c:forEach items="${orgList}" var="p">                
+                 <c:forEach items="${categoryList}" var="p">                
                 <tr>                    
                     <td>${p.id}</td>
                     <td>${p.name}</td>                            
                     <td>
-                    <a href="${pageContext.request.contextPath}/org/nsave?id=${p.id}">修改 </a>
+                    <a href="${pageContext.request.contextPath}/caringcategory/nsave?id=${p.id}">修改 </a>
                     <a href="javascript:void(0);" onclick="del('${p.id}')">删除</a>                   
                     </td>
                 </tr>
@@ -57,7 +47,7 @@
 </div>
 <script type="text/javascript">
 function del(id){
-	var url="${pageContext.request.contextPath}/org/delete?id="+id;	
+	var url="${pageContext.request.contextPath}/caringcategory/delete?id="+id;	
 	 if(confirm("确定要删除当前数据吗？"))
 	 {
 		 $.ajax({
@@ -65,8 +55,8 @@ function del(id){
 	            type: "get",
 	            dataType: "json",            
 	            success: function (result){
-	                if (result["success"]== true){  
-	                	location.href="org/nlist";                    
+	                if (result[ "success"]== true){  
+	                	location.href="caringcategory/nlist";                    
 	                } else {
 	                	showMessage( "错误提示",result["result"],3000);
 	                }

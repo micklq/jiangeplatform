@@ -11,22 +11,15 @@ public class LetterReply extends BaseEntity {
 	
 	private Long  letterid;
 	
-	private Long replyuserid;
+	private Long replyuserid;	
 	
+	@Transient
+	private String replyuser;	
 	
-    @Column(nullable = true,length=50)
-    private String name;
-
     @Column(length = 500, nullable = true)
     private String description;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
 
     public String getDescription() {
         return description;
@@ -50,6 +43,14 @@ public class LetterReply extends BaseEntity {
 
 	public void setReplyuserid(Long replyuserid) {
 		this.replyuserid = replyuserid;
+	}
+
+	public String getReplyuser() {
+		return replyuser;
+	}
+
+	public void setReplyuser(String replyuser) {
+		this.replyuser = replyuser;
 	}
 
 	

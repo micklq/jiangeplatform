@@ -18,35 +18,41 @@
                 	<h3 class="title_jiandu_font" style="border-bottom:none;">信息添加</h3>
                     <table cellpadding="0" cellspacing="0" class="table_span">
                     	<tr>
-                        	<td align="right" width="70">主题：</td>
-                            <td><input type="text" class="input_box_width2" /></td>
+                        	<td align="right" width="70">主题：</td>                        	
+                            <td>
+                            <input type="hidden" name="id"  id="id" value="${requestScope.superv.id}" />                           
+                            <input type="text" name="title" class="easyui-validatebox w220" required="true" value="${requestScope.superv.title}" />
+                            </td>
                         </tr>
                         <tr>
                         	<td align="right">发起人：</td>
-                            <td><input type="text" class="input_box_width3" /></td>
+                            <td>
+                             <select id="officeid" class="easyui-combobox easyui-validatebox" name="officeid" required="true" style="width:220px">
+				             <c:forEach items="${ouserList}" var="item" >
+				             <option value="${item.id}">${item.name}</option>
+				             </c:forEach>
+				             </select>   
+                            </td>
                         </tr>
                         <tr>
                         	<td align="right">主题详情：</td>
-                            <td><textarea class="input_box_width1"></textarea></td>
+                            <td>
+                           <textarea class=" easyui-validatebox textarea_set_ss" name="description" required="true">${requestScope.superv.description}</textarea>                         
+                           </td>
                         </tr>
                         <tr>
                         	<td align="right" valign="top" style="padding-top:12px;">来源：</td>
                             <td>
-                            	<span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
-                                <span><input type="checkbox" class="chearc">［下寺镇检查点］</span>
+                            <select id="locationid" class="easyui-combobox easyui-validatebox" name="locationid" required="true" style="width:220px">
+				             <c:forEach items="${countyList}" var="item" >
+				             <option value="${item.id}">${item.name}</option>
+				             </c:forEach>
+				           </select> 
                             </td>
                         </tr>
                         <tr>
                         	<td align="right"></td>
-                            <td><p class="twobtn_set"><a href="javascript:;">提交</a><a href="javascript:;">返回</a></p></td>
+                            <td><p class="twobtn_set" style="margin-left:5px;"><a href="javascript:void(0);" onclick="save()">提交信息</a><a href="javascript:void(0);" onclick="back()">返回</a></p></td>
                         </tr>
                     </table>
                     
@@ -59,51 +65,58 @@
             <div class="tab_select_box" style="padding:0.2%;">
             	<h3 class="jdry_bottom_title">监督人员（18）</h3>
                 <ul class="ul_li_box">
-                	<li>
+                
+                <% for(int i=0; i<15;i++){ %>
+                     <li>
                     	<img src="images/head1.png" class="header_set" />
                         <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
                         <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
                     </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" class="header_set"  />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
-                    </li>
+                 <% } %>
+                	
+                   
                 </ul>
             </div>
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+$("#locationid").val("${requestScope.superv.locationid}");
+$("#officeid").val("${requestScope.superv.officeid}");
+function back(){
+	location.href="${pageContext.request.contextPath}/superv/nlist";
+}
+function save(){
+	var url;
+	if($("#id").val()>0)
+	{
+		url="${pageContext.request.contextPath}/superv/update";	
+	}
+	else
+	{
+		url="${pageContext.request.contextPath}/superv/create";	
+	}		
+	
+	$.ajax({
+            url: url,
+            data: getFormJson("#updatefm"),
+            type: "post",
+            dataType: "json",
+            beforeSend: function(){
+             return $("#updatefm").form( 'validate');
+            },
+            success: function (result){
+                if (result[ "success"]== true){  
+                	location.href="${pageContext.request.contextPath}/superv/nlist";                    
+                } else {
+                	showMessage( "错误提示",result["result"],3000);
+                }
+            },
+            error:function (result){
+            	showMessage( "Error",JSON.stringify(result),5000);
+            }
+        });
+	}
+</script>
 </body>
 </html>

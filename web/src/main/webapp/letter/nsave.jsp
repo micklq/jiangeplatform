@@ -13,14 +13,7 @@
 <body>
 <!--content-->
 
-<div class="content_box">
-    <ul class="table_add">
-        <li><a href="${pageContext.request.contextPath}/areamanage/nlist">片区管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/org/nlist">科室管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
-        <li><a href="${pageContext.request.contextPath}/letter/nlist" class="hover">联络员登记</a></li>     
-        <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li>    
-    </ul>
+<div class="content_box">    
     <div class="tab_select_box3 ClearFix"	>
         <h3 class="title_jiandu_font">信访录入</h3>
         <div class="forem_box_set">

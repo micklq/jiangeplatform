@@ -82,7 +82,7 @@ public class OrganizationController extends CRUDController<Organization, Long> {
 		if(list!=null&& list.getSize()>0)
         {        	
         	 rlist = list.getContent();
-        }         
+        }		
         model.addAttribute("prePage", prePage);
         model.addAttribute("nextPage", nextPage);
         model.addAttribute("currentPage", page);	

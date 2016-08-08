@@ -39,9 +39,20 @@
                         <c:forEach items="${letterList}" var="p" >		
                         <tr>
                         	<td>${p.id}</td>
-                            <td>${p.officename}</td>
-                            <td style="text-align:left;" width="40%">${p.title}</td>
-                            <td>${p.location}</td>
+                            <td>
+                            <a href="${pageContext.request.contextPath}/letter/ndetail?id=${p.id}" target="_blank">
+                            ${p.officename}
+                            </a></td>
+                            <td style="text-align:left;" width="40%">
+                            <a href="${pageContext.request.contextPath}/letter/ndetail?id=${p.id}" target="_blank">
+                            ${p.title}
+                            </a>
+                            </td>
+                            <td>
+                            <a href="${pageContext.request.contextPath}/letter/ndetail?id=${p.id}" target="_blank">
+                            ${p.location}
+                            </a>
+                            </td>
                             <td style="color:#9c9c9c;font-size:12px;text-align:right;">${p.eventtime}</td>
                         </tr>
                         </c:forEach> 
@@ -81,7 +92,7 @@
                     </div>
                     <div style="height:15px;clear:both;"></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="table_lisrts" style="border-top:solid 1px #e3e3e3;">
-                        <c:forEach items="${liaisonManList}" var="p">              
+                       <c:forEach items="${liaisonManList}" var="p">              
                        <tr>                    
                        <td>${p.id}</td>
                        <td>${p.name}</td>                               

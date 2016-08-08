@@ -24,12 +24,12 @@ public class LetterPetition extends BaseEntity {
     private String description;
 	
 	/**
-	 * 发布人id
+	 * 联络人id
 	 */
 	private Long officeid;	
 	
 	/**
-	 * 发布人姓名
+	 * 联络人姓名
 	 */
 	@Transient
 	private String officename;

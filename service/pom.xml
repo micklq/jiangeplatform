@@ -20,6 +20,10 @@
 	 <groupId>platform.county.jiange</groupId>
 	 <artifactId>base</artifactId>	
 	</dependency>
+	 <dependency>
+	 <groupId>platform.county.jiange</groupId>
+	 <artifactId>model</artifactId>	
+	</dependency>
      <dependency>
 	 <groupId>platform.county.jiange</groupId>
 	 <artifactId>data</artifactId>	

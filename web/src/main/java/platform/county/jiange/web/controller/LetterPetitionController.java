@@ -107,7 +107,7 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 
 		Long uCid = cid;
 		if (cid1 != null && cid1 > 0) {
-			uCid = cid;
+			uCid = cid1;
 		}
 		PageInfo liaisonManPage = getLiaisonManPageInfo(page1, uCid);
 		List<OfficeUser> liaisonManList = getLiaisonManList(page1, uCid);
@@ -139,7 +139,7 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 		map.put("countyList", rlist);
 
 		List<Filter> ofilters = new ArrayList<Filter>();
-
+	 	ofilters.add(new Filter("otype", OfficeUserType.LiaisonMan.getValue()));
 		if (cid != null && cid > 0) {
 			ofilters.add(new Filter("locationid", cid));
 		}
@@ -178,6 +178,16 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 			List<Filter> filters = new ArrayList<Filter>();
 			filters.add(new Filter("letterid", letter.getId()));
 			List<LetterReply> rlist = letterReplyService.findAll(0, 500, filters, new Sort(Sort.Direction.ASC, "id"));
+			if(rlist!=null&&rlist.size()>0){
+				for(LetterReply o :rlist){
+					OfficeUser replyuser = officeUserService.find(o.getReplyuserid());
+					if(replyuser!=null){
+						o.setReplyuser(replyuser.getName());	
+					}
+					
+				}
+				
+			}
 			map.put("replyList", rlist);
 		}
 		return "letter/ndetail";

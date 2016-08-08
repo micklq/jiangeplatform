@@ -30,11 +30,13 @@
             <div class="textareea_set">
             	<ul class="list_pinglun">
             	 <c:forEach items="${replyList}" var="p" >		
-            	 <li>${p.description}<span>［${p.createDateStr}］</span></li>                        
+            	 <li>${p.replyuser}:${p.description}<span>［${p.createDateStr}］</span></li>                        
                  </c:forEach>                      
                 </ul>
                  <form id="updatefm" method="post" novalidate>
-                <textarea class="textarea_set_ss"></textarea>
+                 <input type="hidden" name="id"/>
+                 <input type="hidden" id="letterid" name="letterid" value="${requestScope.letter.id}"/>                  
+                <textarea id="description" name="description" class="textarea_set_ss easyui-validatebox"  required="true"></textarea>
                 <p class="twobtn_set"><a href="javascript:void(0);" onclick="save()">提交回复</a><a href="javascript:void(0);" onclick="back()">返回</a></p>
                 </form>
             </div>
@@ -59,8 +61,9 @@ function save(){
              return $("#updatefm").form( 'validate');
             },
             success: function (result){
-                if (result[ "success"]== true){  
-                	location.href="${pageContext.request.contextPath}/letter/nlist";                    
+                if (result[ "success"]== true){ 
+                    location.reload(true);  
+                	//location.href="${pageContext.request.contextPath}/letter/ndetail";                    
                 } else {
                 	showMessage( "错误提示",result["result"],3000);
                 }

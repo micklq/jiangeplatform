@@ -17,19 +17,14 @@
 			<div class="bj_contentbj">
             	<p class="renqun_zhogd">民生检查重点人群</p>
                 <ul class="shxjf_number_posi">
-                	<li><a href="javascript:;"><input type="checkbox" />涉检信访人员</a></li>
-                    <li><a href="javascript:;" class="hover"><input type="checkbox" />司法救助人员</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />附条件不起诉未成年人和失管未成年人</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />社区矫正人员和刑满释放人员</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />农村“三留守”人员</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />涉法涉诉农民工</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />困难低保户</a></li>
-                    <li><a href="javascript:;"><input type="checkbox" />其他重点人群</a></li>
+                 <!-- <li><a class="hover" href="#" class="hover">司法救助人员</a></li> -->
+                 <c:forEach items="${categoryList}" var="p">                  
+                  <li><a  href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${p.id}">${p.name}</a></li>  
+                 </c:forEach>                    
                 </ul>
-                <div class="three_btn">
-                	<a href="javascript:;">删除</a>
-                    <a href="javascript:;">修改</a>
-                    <a href="javascript:;">添加</a>
+                <div class="three_btn">                	
+                    <a href="${pageContext.request.contextPath}/caringcategory/nlist">维护</a>
+                    <a href="${pageContext.request.contextPath}/caringcategory/nsave?id=0">添加</a>
                 </div>
             </div>
         </div>
@@ -43,121 +38,47 @@
                             <dt class="flBox">请选择检查点<span></span></dt>
                             <dd>
                                 <ul>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
-                                    <li><a href="#">检查点1</a></li>
-                                    <li><a href="#">检查点2</a></li>
-                                    <li><a href="#">检查点3</a></li>
-                                    <li><a href="#">检查点4</a></li>
-                                    <li><a href="#">检查点5</a></li>
-                                    <li><a href="#">检查点6</a></li>
+                                   <c:forEach items="${countyList}" var="item" >				             
+				                   <li><a href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${item.id}">${item.name}</a></li>
+				                   </c:forEach>  
                                 </ul>
                             </dd>
                         </dl>
                     </div>
                     <div class="r prev_next">
-                    	<a href="javascript:;">上一页</a>
-                        <span>1/2</span>
-                        <a href="javascript:;">下一页</a>
+                      <a href="${pageContext.request.contextPath}/caringpeople/nlist?page=${requestScope.caringPage.prePage}">上一页</a>
+                      <span>${requestScope.caringPage.currentPage}/${requestScope.caringPage.pageCount}</span>
+                      <a href="${pageContext.request.contextPath}/caringpeople/nlist?page=${requestScope.caringPage.nextPage}">下一页</a>                    
                     </div>
                     <div style="height:15px;clear:both;"></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="table_lisrts">
                     	<tr>
-                        	<th><input type="checkbox" /></th>
+                        	<th>ID</th>
                             <th>姓名</th>
-                            <th>性别</th>
-                            <th>地址</th>
-                            <th>监护人</th>
-                            <th>监护人电话</th>
-                            <th>其他</th>
+                            <th>性别</th>                            
+                            <th>监护人/责任人</th>
+                            <th>电话</th>
+                            <th>类别</th>
+                            <th>联络点</th>   
+                            <th>操作</th>                            
                         </tr>
+                         <c:forEach items="${letterList}" var="p" >	
                         <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
+                        	<td>${p.id}</td>
+                            <td>${p.name}</td>
+                            <td>${p.gender}</td>
+                            <td>${p.guardian}</td>
+                            <td>${p.mobile}</td>
+                            <td>${p.categoryname}</td>
+                            <td>${p.countyname}</td>  
+                            <td>
+                            <a href="${pageContext.request.contextPath}/caringpeople/nsave?id=${p.id}">修改 </a>
+                            <a href="javascript:void(0);" onclick="del('${p.id}')">删除</a>  
+                            </td>                          
                         </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /></td>
-                            <td>刘东</td>
-                            <td>男</td>
-                            <td>普安真田家祥 三队</td>
-                            <td>刘颖</td>
-                            <td>13560325564</td>
-                            <td>无</td>
-                        </tr>
+                        </c:forEach>                        
                     </table>
-                    <div class="five_btn">
+                    <!-- <div class="five_btn">
                     	<div class="prev_next" >
                             <a href="javascript:;">上一页</a>
                             <span>1/2</span>
@@ -168,12 +89,36 @@
                             <a href="javascript:;">修改</a>
                             <a href="javascript:;">添加</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<script type="text/javascript">
+function del(id){
+	var url="${pageContext.request.contextPath}/caringpeople/delete?id="+id;	
+	 if(confirm("确定要删除当前数据吗？"))
+	 {
+		 $.ajax({
+	            url: url,          
+	            type: "get",
+	            dataType: "json",            
+	            success: function (result){
+	                if (result[ "success"]== true){  
+	                	location.href="caringpeople/nlist";                    
+	                } else {
+	                	showMessage( "错误提示",result["result"],3000);
+	                }
+	            },
+	            error:function (result){
+	            	showMessage( "Error",JSON.stringify(result),5000);
+	            }
+	        });
+	 }
+	
+	}
+</script>
 </body>
 </html>

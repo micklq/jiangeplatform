@@ -3,6 +3,7 @@ package platform.county.jiange.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 监督平台信息回复
@@ -16,9 +17,9 @@ public class SupervisionReply extends BaseEntity{
 	
 	private Long replyuserid;
 	
-    @Column(nullable = true,length=50)
-    private String name;
-
+	@Transient
+	private String replyuser;	
+	
     @Column(length = 500, nullable = true)
     private String description;
 
@@ -37,21 +38,21 @@ public class SupervisionReply extends BaseEntity{
 	public void setReplyuserid(Long replyuserid) {
 		this.replyuserid = replyuserid;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getReplyuser() {
+		return replyuser;
+	}
+
+	public void setReplyuser(String replyuser) {
+		this.replyuser = replyuser;
 	}
     
     
