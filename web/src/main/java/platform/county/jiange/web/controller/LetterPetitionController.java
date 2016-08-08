@@ -180,10 +180,13 @@ public class LetterPetitionController extends CRUDController<LetterPetition, Lon
 			List<LetterReply> rlist = letterReplyService.findAll(0, 500, filters, new Sort(Sort.Direction.ASC, "id"));
 			if(rlist!=null&&rlist.size()>0){
 				for(LetterReply o :rlist){
-					OfficeUser replyuser = officeUserService.find(o.getReplyuserid());
-					if(replyuser!=null){
-						o.setReplyuser(replyuser.getName());	
+					if(o.getReplyuserid()!=null&&o.getReplyuserid()>0){
+						OfficeUser replyuser = officeUserService.find(o.getReplyuserid());
+						if(replyuser!=null){
+							o.setReplyuser(replyuser.getName());	
+						}	
 					}
+					
 					
 				}
 				

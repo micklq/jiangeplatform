@@ -77,6 +77,8 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 		model.addAttribute("caringPage", caringPage);
 		model.put("caringList", caringList);
 		
+		List<CaringPeopleCategory> categoryList = caringPeopleCategoryService.findAll();
+		model.put("categoryList", categoryList);
 		//联络点信息
 		List<Filter> filters = new ArrayList<Filter>();
 		filters.add(new Filter("parentidEq", 1L));
@@ -139,7 +141,7 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 
 		List<Filter> filters = new ArrayList<Filter>();
 		if (cid != null && cid > 0) {
-			filters.add(new Filter("locationidEq", cid));
+			filters.add(new Filter("countyidEq", cid));
 		}
 		Pageable pr = new PageRequest(page, 12, new Sort(Direction.DESC, "id"));
 		Page<CaringPeople> list = caringPeopleService.findAll(pr, filters);

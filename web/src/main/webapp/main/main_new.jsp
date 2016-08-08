@@ -35,12 +35,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<!-- 左侧导航 -->
 	<div class="left_box">
 	<ul>
-    	<li><a href="<%=basePath%>/firstnet/nlist"><img src="image/fjwl.png" width="35" height="35"><span>分级网络</span></a></li>
-        <li><a href="<%=basePath%>/letter/nlist"><img src="image/jfpt.png" width="35" height="35"><span>接访平台</span></a></li>
-        <li><a href="<%=basePath%>/caringpeople/nlist" ><img src="image/wwpt.png" width="35" height="35"><span>维稳平台</span></a></li>
-        <li><a href="<%=basePath%>/superv/nlist"><img src="image/jdxx.png" width="35" height="35"><span>监督信息</span></a></li>
-        <li><a href="<%=basePath%>/areamanage/nlist" class="hover"><img src="image/xxpt.png" width="35" height="35"><span>信息平台</span></a></li>
-        <li><a href="<%=basePath%>/user/userlist"><img src="image/glpt.png" width="35" height="35"><span>管理平台</span></a></li>
+    	<li><a href="<%=basePath%>firstnet/nlist"><img src="image/fjwl.png" width="35" height="35"><span>分级网络</span></a></li>
+        <li><a href="<%=basePath%>letter/nlist"><img src="image/jfpt.png" width="35" height="35"><span>接访平台</span></a></li>
+        <li><a href="<%=basePath%>caringpeople/nlist" ><img src="image/wwpt.png" width="35" height="35"><span>维稳平台</span></a></li>
+        <li><a href="<%=basePath%>superv/nlist"><img src="image/jdxx.png" width="35" height="35"><span>监督信息</span></a></li>
+        <li><a href="<%=basePath%>areamanage/nlist" class="hover"><img src="image/xxpt.png" width="35" height="35"><span>信息平台</span></a></li>
+        <li><a href="<%=basePath%>user/userlist"><img src="image/glpt.png" width="35" height="35"><span>管理平台</span></a></li>
     </ul>
    </div>
 

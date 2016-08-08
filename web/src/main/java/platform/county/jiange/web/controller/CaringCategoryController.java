@@ -104,7 +104,7 @@ public class CaringCategoryController extends CRUDController<CaringPeopleCategor
 			category = caringPeopleCategoryService.find(id);
 		}
 		map.addAttribute("category", category);
-		return "caringpeople/nsave";
+		return "caringcategory/nsave";
 	}	
 
 }
