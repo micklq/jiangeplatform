@@ -260,8 +260,8 @@ img{border:none;}
 
 .add_name_box{padding:0 23px;margin-top:30px;}
 .tabl_form_sebo tr td{padding:10px 0;}
-.tabl_form_sebo tr td span{float:left;margin-right:5px;}
-.tabl_form_sebo tr td span input{margin-top:2px;}
+/* .tabl_form_sebo tr td span{float:left;margin-right:5px;}
+.tabl_form_sebo tr td span input{margin-top:2px;} */
 .input_width113{width:105px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}
 .width230{width:222px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}
 .width84{width:76px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}

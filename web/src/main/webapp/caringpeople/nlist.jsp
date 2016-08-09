@@ -40,7 +40,7 @@
                             <dd>
                                 <ul>
                                    <c:forEach items="${countyList}" var="item" >				             
-				                   <li><a href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${item.id}">${item.name}</a></li>
+				                   <li><a href="${pageContext.request.contextPath}/caringpeople/nlist?lid=${item.id}">${item.name}</a></li>
 				                   </c:forEach>  
                                 </ul>
                             </dd>
@@ -63,7 +63,7 @@
                             <th>联络点</th>   
                             <th>操作</th>                            
                         </tr>
-                         <c:forEach items="${letterList}" var="p" >	
+                         <c:forEach items="${caringList}" var="p" >	
                         <tr>
                         	<td>${p.id}</td>
                             <td>${p.name}</td>
