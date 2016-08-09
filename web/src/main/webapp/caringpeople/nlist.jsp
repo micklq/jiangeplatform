@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,7 @@
                 <ul class="shxjf_number_posi">
                  <!-- <li><a class="hover" href="#" class="hover">司法救助人员</a></li> -->
                  <c:forEach items="${categoryList}" var="p">                  
-                  <li><a  href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${p.id}">${p.name}</a></li>  
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${p.id}">${p.name}</a></li>  
                  </c:forEach>                    
                 </ul>
                 <div class="three_btn">                	
@@ -83,13 +84,13 @@
                             <a href="javascript:;">上一页</a>
                             <span>1/2</span>
                             <a href="javascript:;">下一页</a>
-                        </div>
+                        </div>-->
                     	<div class="three_btn thbtn_position">
-                            <a href="javascript:;">删除</a>
-                            <a href="javascript:;">修改</a>
-                            <a href="javascript:;">添加</a>
+                          <!--  <a href="javascript:;">删除</a>-->
+                            <!--<a href="javascript:;">修改</a>-->
+                            <a href="${pageContext.request.contextPath}/caringpeople/nsave?id=0">添加</a>
                         </div>
-                    </div> -->
+                    </div> 
                 </div>
             </div>
         </div>

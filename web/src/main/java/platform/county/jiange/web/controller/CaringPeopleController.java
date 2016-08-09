@@ -77,6 +77,9 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 		model.addAttribute("caringPage", caringPage);
 		model.put("caringList", caringList);
 		
+		List<CaringPeopleCategory> categoryList = caringPeopleCategoryService.findAll();
+		model.put("categoryList", categoryList);
+		
 		//联络点信息
 		List<Filter> filters = new ArrayList<Filter>();
 		filters.add(new Filter("parentidEq", 1L));

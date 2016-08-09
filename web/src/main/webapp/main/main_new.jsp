@@ -12,10 +12,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><decorator:title default="剑阁县人民检察院平台管理" />-剑阁县人民检察院平台管理</title>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/style/easyui/easyui.css">
-<link href="<%=basePath%>/style/css.css" rel="stylesheet">
-<script src="<%=basePath%>/script/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/script/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/script/easyui/locale/easyui-lang-zh_CN.js"></script>
+<link href="<%=basePath%>style/css.css" rel="stylesheet">
+<script src="<%=basePath%>script/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>script/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>script/easyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="<%=basePath%>/script/jsMain.js"></script>
 <decorator:head />
 </head>
@@ -35,12 +35,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<!-- 左侧导航 -->
 	<div class="left_box">
 	<ul>
-    	<li><a href="<%=basePath%>/firstnet/nlist"><img src="image/fjwl.png" width="35" height="35"><span>分级网络</span></a></li>
-        <li><a href="<%=basePath%>/letter/nlist"><img src="image/jfpt.png" width="35" height="35"><span>接访平台</span></a></li>
-        <li><a href="<%=basePath%>/caringpeople/nlist" ><img src="image/wwpt.png" width="35" height="35"><span>维稳平台</span></a></li>
-        <li><a href="<%=basePath%>/superv/nlist"><img src="image/jdxx.png" width="35" height="35"><span>监督信息</span></a></li>
-        <li><a href="<%=basePath%>/areamanage/nlist" class="hover"><img src="image/xxpt.png" width="35" height="35"><span>信息平台</span></a></li>
-        <li><a href="<%=basePath%>/user/userlist"><img src="image/glpt.png" width="35" height="35"><span>管理平台</span></a></li>
+    	<li><a href="<%=basePath%>firstnet/nlist"><img src="image/fjwl.png" width="35" height="35"><span>分级网络</span></a></li>
+        <li><a href="<%=basePath%>letter/nlist"><img src="image/jfpt.png" width="35" height="35"><span>接访平台</span></a></li>
+        <li><a href="<%=basePath%>caringpeople/nlist" ><img src="image/wwpt.png" width="35" height="35"><span>维稳平台</span></a></li>
+        <li><a href="<%=basePath%>superv/nlist"><img src="image/jdxx.png" width="35" height="35"><span>监督信息</span></a></li>
+        <li><a href="<%=basePath%>areamanage/nlist" class="hover"><img src="image/xxpt.png" width="35" height="35"><span>信息平台</span></a></li>
+        <li><a href="<%=basePath%>user/userlist"><img src="image/glpt.png" width="35" height="35"><span>管理平台</span></a></li>
     </ul>
    </div>
 

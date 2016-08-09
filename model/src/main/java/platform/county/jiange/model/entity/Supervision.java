@@ -47,11 +47,7 @@ public class Supervision extends BaseEntity{
 		@Transient
 		private String officename;
 		
-		/**
-		 * 事件时间
-		 */
-		private String eventtime;
-
+		
 		public String getTitle() {
 			return title;
 		}
@@ -100,12 +96,6 @@ public class Supervision extends BaseEntity{
 			this.location = location;
 		}
 
-		public String getEventtime() {
-			return eventtime;
-		}
-
-		public void setEventtime(String eventtime) {
-			this.eventtime = eventtime;
-		}
+		
 	     
 }

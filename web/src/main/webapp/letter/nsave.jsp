@@ -29,7 +29,7 @@
                         <tr>
                             <td align="right">信访时间：</td>
                             <td>                            
-                            <input type="text" name="eventtime" class="easyui-validatebox w220" required="true" value="${requestScope.letter.eventtime}" />
+                            <input type="text" name="eventtime" class="easyui-datebox w220" required="true" value="${requestScope.letter.eventtime}" />
                             </td>
                         </tr>  
                         <tr>
