@@ -17,18 +17,19 @@
 			<div class="bj_contentbj">
             	<div style="padding:20px;">
                 	<h3 class="title_jiandu_font" style="border-bottom:none;">信息添加</h3>
-                    <table cellpadding="0" cellspacing="0" class="table_span">
+                	 <form id="updatefm" method="post" novalidate>
+                    <table cellpadding="0" cellspacing="0" class="tab_padding_t">
                     	<tr>
                         	<td align="right" width="70">主题：</td>                        	
                             <td>
-                            <input type="hidden" name="id"  id="id" value="${requestScope.superv.id}" />                           
-                            <input type="text" name="title" class="easyui-validatebox w220" required="true" value="${requestScope.superv.title}" />
+                            <input type="hidden" id="id" name="id"   value="${requestScope.superv.id}" />                           
+                            <input type="text" id="title" name="title" class="easyui-validatebox w220" required="true" value="${requestScope.superv.title}" />
                             </td>
                         </tr>
                         <tr>
                         	<td align="right">发起人：</td>
                             <td>
-                             <select id="officeid" class="easyui-combobox easyui-validatebox" name="officeid" required="true" style="width:220px">
+                             <select id="officeid" name="officeid" class="easyui-combobox easyui-validatebox"  required="true" style="width:220px">
 				             <c:forEach items="${ouserList}" var="item" >
 				             <option value="${item.id}">${item.name}</option>
 				             </c:forEach>
@@ -38,7 +39,7 @@
                         <tr>
                         	<td align="right">主题详情：</td>
                             <td>
-                           <textarea class=" easyui-validatebox textarea_set_ss" name="description" required="true">${requestScope.superv.description}</textarea>                         
+                           <textarea id="description" name="description" class="easyui-validatebox textarea_set_ss"  required="true">${requestScope.superv.description}</textarea>                         
                            </td>
                         </tr>
                         <tr>
@@ -56,7 +57,7 @@
                             <td><p class="twobtn_set" style="margin-left:5px;"><a href="javascript:void(0);" onclick="save()">提交信息</a><a href="javascript:void(0);" onclick="back()">返回</a></p></td>
                         </tr>
                     </table>
-                    
+                    </form>
                 </div>
             </div>
         </div>
@@ -65,16 +66,14 @@
     	<div class="content_left_con2">
             <div class="tab_select_box" style="padding:0.2%;">
             	<h3 class="jdry_bottom_title">监督人员（18）</h3>
-                <ul class="ul_li_box">
-                
-                <% for(int i=0; i<15;i++){ %>
+                <ul class="ul_li_box">  
+                     <c:forEach items="${souList}" var="p" >		
                      <li>
-                    	<img src="images/head1.png" class="header_set" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                        <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a>
+                    	<img src="${pageContext.request.contextPath}/image/head1.png" class="header_set" />
+                        <p>${p.name}<b>${p.orgname}</b><span>${p.postname}</span></p>
+                        <!-- <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a> -->
                     </li>
-                 <% } %>
-                	
+                    </c:forEach>   
                    
                 </ul>
             </div>

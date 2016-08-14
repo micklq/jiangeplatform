@@ -748,7 +748,13 @@ public class Util {
 	}
 
 	
-
+	public static String trimEndComma(String input) {
+		String s = input;
+		while (s.endsWith(",")) {
+			s = s.substring(0, s.length() - 1);
+		}
+		return s;
+	}
 	
 	public static Long[] toLongArray(String str) {
 		String[] ary =str.split(",");

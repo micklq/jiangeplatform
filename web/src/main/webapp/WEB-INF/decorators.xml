@@ -30,6 +30,9 @@
     <decorator name="main" page="main.jsp">
         <pattern>/*</pattern>
     </decorator>
+     <decorator name="main1" page="main_new.jsp">
+        <pattern>/*plist*</pattern>
+    </decorator>
     <decorator name="main1" page="main_new.jsp">
         <pattern>/*nlist*</pattern>
     </decorator>

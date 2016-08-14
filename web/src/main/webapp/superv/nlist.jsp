@@ -15,7 +15,7 @@
     <div class="content_right2">
     	<div class="content_left_con2">
             <div class="tab_select_box">
-            	<h3 class="title_jiandu_font">监督信息（共${requestScope.letterPage.dataCount}件）</h3>
+            	<h3 class="title_jiandu_font">监督信息（共${requestScope.supervPage.dataCount}件）</h3>
             	<div class="select_cont_set">
                 	<div class="l select_both">
                         <dl class="select_Set fl">
@@ -36,7 +36,7 @@
                     </div>
                     <div style="height:15px;clear:both;"></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="table_lisrts" style="border-top:solid 1px #e3e3e3;">
-                         <c:forEach items="${letterList}" var="p" >		
+                         <c:forEach items="${supervList}" var="p" >		
                         <tr>
                         	<td>${p.id}</td>
                             <td>
@@ -53,7 +53,7 @@
                             ${p.location}
                             </a>
                             </td>
-                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">${p.eventtime}</td>
+                            <td style="color:#9c9c9c;font-size:12px;text-align:right;">${p.createDateStr}</td>
                             <td>
                             <a href="${pageContext.request.contextPath}/superv/nsave?id=${p.id}">修改 </a>
                             <a href="javascript:void(0);" onclick="del('${p.id}')">删除</a>  
@@ -70,7 +70,7 @@
                     	<div class="three_btn thbtn_position">
                             <!-- <a href="javascript:;">删除</a>
                             <a href="javascript:;">修改</a> -->
-                            <a href="javascript:;">添加</a>
+                            <a href="${pageContext.request.contextPath}/superv/nsave">添加</a>
                         </div>
                     </div>
                 </div>

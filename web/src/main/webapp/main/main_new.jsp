@@ -12,10 +12,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><decorator:title default="剑阁县人民检察院平台管理" />-剑阁县人民检察院平台管理</title>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/style/easyui/easyui.css">
-<link href="<%=basePath%>/style/css.css" rel="stylesheet">
-<script src="<%=basePath%>/script/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/script/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/script/easyui/locale/easyui-lang-zh_CN.js"></script>
+<link href="<%=basePath%>style/css.css" rel="stylesheet">
+<script src="<%=basePath%>script/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>script/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>script/easyui/locale/easyui-lang-zh_CN.js"></script>
 <script src="<%=basePath%>/script/jsMain.js"></script>
 <decorator:head />
 </head>

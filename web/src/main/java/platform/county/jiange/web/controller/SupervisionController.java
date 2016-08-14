@@ -23,6 +23,8 @@ import platform.county.jiange.model.entity.County;
 import platform.county.jiange.model.entity.LetterPetition;
 import platform.county.jiange.model.entity.LetterReply;
 import platform.county.jiange.model.entity.OfficeUser;
+import platform.county.jiange.model.entity.OrgPost;
+import platform.county.jiange.model.entity.Organization;
 import platform.county.jiange.model.entity.Supervision;
 import platform.county.jiange.model.entity.SupervisionReply;
 import platform.county.jiange.model.enums.OfficeUserType;
@@ -124,13 +126,34 @@ public class SupervisionController extends CRUDController<Supervision, Long> {
 
 		List<Filter> ofilters = new ArrayList<Filter>();
 		ofilters.add(new Filter("otype", OfficeUserType.Supervisor.getValue()));
+		//监督员列表
+		List<OfficeUser> solist = officeUserService.findAll(0, 500, ofilters,new Sort(Sort.Direction.ASC, "id"));
+         if(solist!=null&& solist.size()>0){			
+			for(OfficeUser o :solist){
+				if(o.getOrgid()!=null&&o.getOrgid()>0){
+		    		   Organization item = organizationService.find(o.getOrgid());
+			    	   if(item!=null){
+			    		   o.setOrgname(item.getName());  
+			    	   }
+		    	   }  
+		    	   
+		    	   if(o.getPostid()!=null&&o.getPostid()>0){
+		    		   OrgPost item = orgPostService.find(o.getPostid());
+			    	   if(item!=null){
+			    		   o.setPostname(item.getName());  
+			    	   }
+		    	   }
+			}
+		}		
+		map.put("souList", solist);
+		//监督员
 		if (cid != null && cid > 0) {
 			ofilters.add(new Filter("locationid", cid));
 		}
-		List<OfficeUser> olist = officeUserService.findAll(0, 500, ofilters,
-				new Sort(Sort.Direction.ASC, "id"));
-		map.put("ouserList", olist);
-
+		List<OfficeUser> olist = officeUserService.findAll(0, 500, ofilters,new Sort(Sort.Direction.ASC, "id"));	
+		map.put("ouserList", olist);		
+		
+		
 		return "superv/nsave";
 	}
 
@@ -158,6 +181,29 @@ public class SupervisionController extends CRUDController<Supervision, Long> {
 				superv.setOfficename(item.getName());
 			}
 		}
+		//监督员列表
+		List<Filter> ofilters = new ArrayList<Filter>();
+		ofilters.add(new Filter("otype", OfficeUserType.Supervisor.getValue()));
+		List<OfficeUser> solist = officeUserService.findAll(0, 500, ofilters,new Sort(Sort.Direction.ASC, "id"));
+         if(solist!=null&& solist.size()>0){			
+			for(OfficeUser o :solist){
+				if(o.getOrgid()!=null&&o.getOrgid()>0){
+		    		   Organization item = organizationService.find(o.getOrgid());
+			    	   if(item!=null){
+			    		   o.setOrgname(item.getName());  
+			    	   }
+		    	   }  
+		    	   
+		    	   if(o.getPostid()!=null&&o.getPostid()>0){
+		    		   OrgPost item = orgPostService.find(o.getPostid());
+			    	   if(item!=null){
+			    		   o.setPostname(item.getName());  
+			    	   }
+		    	   }
+			}
+		}		
+		map.put("souList", solist);
+		
 		map.addAttribute("superv", superv);
 		// 回复信息
 		if (superv.getId() > 0) {

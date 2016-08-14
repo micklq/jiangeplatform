@@ -20,7 +20,7 @@
                 <ul class="shxjf_number_posi">
                  <!-- <li><a class="hover" href="#" class="hover">司法救助人员</a></li> -->
                  <c:forEach items="${categoryList}" var="p">                  
-                  <li><a  href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${p.id}">${p.name}</a></li>  
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${p.id}">${p.name}</a></li>  
                  </c:forEach>                    
                 </ul>
                 <div class="three_btn">                	
@@ -40,7 +40,7 @@
                             <dd>
                                 <ul>
                                    <c:forEach items="${countyList}" var="item" >				             
-				                   <li><a href="${pageContext.request.contextPath}/caringpeople/nlist?cid=${item.id}">${item.name}</a></li>
+				                   <li><a href="${pageContext.request.contextPath}/caringpeople/nlist?lid=${item.id}">${item.name}</a></li>
 				                   </c:forEach>  
                                 </ul>
                             </dd>
@@ -63,7 +63,7 @@
                             <th>联络点</th>   
                             <th>操作</th>                            
                         </tr>
-                         <c:forEach items="${letterList}" var="p" >	
+                         <c:forEach items="${caringList}" var="p" >	
                         <tr>
                         	<td>${p.id}</td>
                             <td>${p.name}</td>
@@ -84,13 +84,13 @@
                             <a href="javascript:;">上一页</a>
                             <span>1/2</span>
                             <a href="javascript:;">下一页</a>
-                        </div>
+                        </div>-->
                     	<div class="three_btn thbtn_position">
-                            <a href="javascript:;">删除</a>
-                            <a href="javascript:;">修改</a>
-                            <a href="javascript:;">添加</a>
+                          <!--  <a href="javascript:;">删除</a>-->
+                            <!--<a href="javascript:;">修改</a>-->
+                            <a href="${pageContext.request.contextPath}/caringpeople/nsave?id=0">添加</a>
                         </div>
-                    </div> -->
+                    </div> 
                 </div>
             </div>
         </div>

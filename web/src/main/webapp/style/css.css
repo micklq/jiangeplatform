@@ -260,8 +260,8 @@ img{border:none;}
 
 .add_name_box{padding:0 23px;margin-top:30px;}
 .tabl_form_sebo tr td{padding:10px 0;}
-.tabl_form_sebo tr td span{float:left;margin-right:5px;}
-.tabl_form_sebo tr td span input{margin-top:2px;}
+/* .tabl_form_sebo tr td span{float:left;margin-right:5px;}
+.tabl_form_sebo tr td span input{margin-top:2px;} */
 .input_width113{width:105px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}
 .width230{width:222px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}
 .width84{width:76px;height:30px;line-height:30px;padding-left:8px;text-align:left;color:#666;border:solid 1px #9b9b9b;border-radius:3px;}
@@ -281,6 +281,7 @@ img{border:none;}
 .cheak_a{position:absolute;right:10px;bottom:15px;display:block;width:10px;height:10px;}
 .table_span tr td{padding:10px 0;}
 .table_span tr td span{float:left;/*background:url(../image/check.png) no-repeat left 5px;*/padding-left:20px;font-size:14px;color:#4a4a4a;margin-right:26px;padding-bottom:10px;}
+
 .chearc{float:left;margin-top:3px;margin-right:5px;}
 
 /**0723**/
@@ -300,6 +301,7 @@ img{border:none;}
 .forem_box_set1{padding:10px 0 0; margin-bottom:30px;}
 .w220{width:210px;height:30px;border:solid 1px #9b9b9b;border-radius:2px;margin-left:5px;padding-left:10px;line-height:30px;}
 .tab_padding_t tr td{padding-top:15px;color:#525252;}
+.tab_padding_t tr td span.spck{float:left;/*background:url(../image/check.png) no-repeat left 5px;*/padding-left:20px;font-size:14px;color:#4a4a4a;margin-right:26px;padding-bottom:10px;}
 .add_tianji_keshi{width:88px;height:25px;background:url(../image/bj3.png) repeat-x;border:solid 1px #979797;text-align:center;line-height:24px;color:#a7a7a7;border-radius:2px;float:right;font-size:12px;font-weight:100;margin-top:12px;}
 .tab_padding_t1{width:100%;}
 .tab_padding_t1 tr th{height:35px;background:#f4f4f4;text-align:center;font-weight:100;color:#515151;border-bottom:solid 1px #e3e3e3;}

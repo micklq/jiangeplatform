@@ -16,22 +16,26 @@
     	<div class="content_left_con">
 			<div class="bj_contentbj">
             	<div style="padding:20px;">
-                    <div class="zhaiyao_set" style="background:none;border-bottom:solid 1px #ddd;">
-                        关于立即开展落实民生19项核查点情况意见通知
-                        <p>发布人：<span>刘东</span> &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联络点：<span>下寺镇查点</span> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;时间：<span>7月8号</span></p>
+                    <div class="zhaiyao_set" style="background:none;border-bottom:solid 1px #ddd;">${requestScope.superv.title}                    
+                        <p>发布人：<span>${requestScope.superv.officename}</span> &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                联络点：<span>${requestScope.superv.location}</span> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                 时间：<span>${requestScope.superv.createDateStr}</span></p>
                     </div>
                     <div class="contentbox_set_box">
-                            各市（州）、县（市、区）人民政府，省政府各部门、各直属机构：
-    现将《国务院关于对稳增长促改革调结构惠民生政策措施落实情况开展全面督查的通知》（国发明电〔2014〕1号）转发你们，请按照通知要求立即开展自查，要对4个方面、19个重点领域的60项重点内容逐一对照检查，确保国务院政策措施落实到位。现就有关工作通知如下。
-                </div>
+                     ${requestScope.superv.description}  
+                   </div>
                 <h3 class="title_jiandu_font" style="border-bottom:none;">评论回复</h3>
                 <div class="textareea_set">
                     <ul class="list_pinglun">
-                        <li>王志国：请新秘书长审签，这个资料是按照省部属修改<span> ［2016-07-10］</span></li>
-                        <li>李沉：同意<span> ［2016-07-10］</span></li>
+                    <c:forEach items="${replyList}" var="p" >		
+            	    <li>${p.replyuser}:${p.description}<span>［${p.createDateStr}］</span></li>                        
+                    </c:forEach>                          
                     </ul>
-                    <textarea class="textarea_set_ss"></textarea>
-                    <p class="twobtn_set"><a href="javascript:;">提交回复</a><a href="javascript:;">返回</a></p>
+                    <form id="updatefm" method="post" novalidate>
+                    <input type="hidden" name="id"/>
+                     <input type="hidden" id="supervid" name="supervid" value="${requestScope.superv.id}"/> 
+                    <textarea id="description" name="description" class="textarea_set_ss easyui-validatebox"  required="true"></textarea>
+                    <p class="twobtn_set"><a href="javascript:void(0);" onclick="save()">提交回复</a><a href="javascript:void(0);" onclick="back()">返回</a></p>
                 </div>
                 </div>
             </div>
@@ -41,43 +45,51 @@
     	<div class="content_left_con2">
             <div class="tab_select_box" style="padding:0.2%;">
             	<h3 class="jdry_bottom_title">监督人员（18）</h3>
-                <ul class="ul_li_box">
-                	<li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
+                <ul class="ul_li_box">                
+                     <c:forEach items="${souList}" var="p" >		
+                     <li>
+                    	<img src="${pageContext.request.contextPath}/image/head1.png" class="header_set" />
+                        <p>${p.name}<b>${p.orgname}</b><span>${p.postname}</span></p>
+                        <!-- <a href="javascript:;" class="cheak_a"><input type="checkbox" /></a> -->
                     </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
-                    <li>
-                    	<img src="images/head1.png" />
-                        <p>杨玉林<b>市政府督查室</b><span>督办人</span></p>
-                    </li>
+                    </c:forEach>       
+                            	
                 </ul>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$("#locationid").val("${requestScope.letter.locationid}");
+$("#officeid").val("${requestScope.letter.officeid}");
+function back(){
+	location.href="${pageContext.request.contextPath}/superv/nlist";
+}
+function save(){
+	var url="${pageContext.request.contextPath}/supervreply/create";	
+	
+	$.ajax({
+            url: url,
+            data: getFormJson("#updatefm"),
+            type: "post",
+            dataType: "json",
+            beforeSend: function(){
+             return $("#updatefm").form( 'validate');
+            },
+            success: function (result){
+                if (result[ "success"]== true){ 
+                    location.reload(true);  
+                	//location.href="${pageContext.request.contextPath}/letter/ndetail";                    
+                } else {
+                	showMessage( "错误提示",result["result"],3000);
+                }
+            },
+            error:function (result){
+            	showMessage( "Error",JSON.stringify(result),5000);
+            }
+        });
+	}
+</script>
 </body>
 </html>

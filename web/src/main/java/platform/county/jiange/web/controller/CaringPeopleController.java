@@ -69,16 +69,18 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 	@RequestMapping("nlist")
 	public String nlist(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
 			@RequestParam(value = "cid", required = false, defaultValue = "0") Long cid,
+			@RequestParam(value = "lid", required = false, defaultValue = "0") Long lid,
 			ModelMap model){
 		
 		model.addAttribute("categoryid", cid);
-		PageInfo caringPage = getCaringPageInfo(page, cid);
-		List<CaringPeople> caringList = getCaringList(page, cid);
+		PageInfo caringPage = getCaringPageInfo(page, cid, lid);
+		List<CaringPeople> caringList = getCaringList(page, cid, lid);
 		model.addAttribute("caringPage", caringPage);
 		model.put("caringList", caringList);
 		
 		List<CaringPeopleCategory> categoryList = caringPeopleCategoryService.findAll();
-		model.put("categoryList", categoryList);
+		model.put("categoryList", categoryList);		
+		
 		//联络点信息
 		List<Filter> filters = new ArrayList<Filter>();
 		filters.add(new Filter("parentidEq", 1L));
@@ -109,13 +111,20 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 		
 		return "caringpeople/nsave";
 	}	
-	private PageInfo getCaringPageInfo(Integer page, Long cid) {
+	private PageInfo getCaringPageInfo(Integer page, Long cid, Long lid) {
 
 		PageInfo pageInfo = new PageInfo();
 		int dataCount = (int) caringPeopleService.count(); // 添加过滤
+		List<Filter> filters = new ArrayList<Filter>();		
 		if (cid != null && cid > 0) {
-			dataCount = (int) caringPeopleService.count(Filter.eq("categoryid",
-					cid));
+			filters.add(new Filter("categoryidEq", cid));
+			
+		}
+		if (lid != null && lid > 0) {
+			filters.add(new Filter("countyidEq", lid));
+		}
+		if (filters.size()>0) {
+			dataCount = (int) caringPeopleService.count(filters);
 		}
 		int dataPage = (int) (dataCount / 12);
 		if (dataCount % 12 == 0) {
@@ -137,11 +146,16 @@ public class CaringPeopleController extends CRUDController<CaringPeople, Long> {
 		return pageInfo;
 	}
 
-	private List<CaringPeople> getCaringList(Integer page, Long cid) {
+	private List<CaringPeople> getCaringList(Integer page, Long cid, Long lid) {
 
 		List<Filter> filters = new ArrayList<Filter>();
 		if (cid != null && cid > 0) {
-			filters.add(new Filter("countyidEq", cid));
+			
+			filters.add(new Filter("categoryidEq", cid));			
+		}
+		if (lid != null && lid > 0) {
+			filters.add(new Filter("countyidEq", lid));
+
 		}
 		Pageable pr = new PageRequest(page, 12, new Sort(Direction.DESC, "id"));
 		Page<CaringPeople> list = caringPeopleService.findAll(pr, filters);

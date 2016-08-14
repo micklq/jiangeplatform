@@ -200,12 +200,12 @@ public class ContactPointScheduleController extends CRUDController<ContactPointS
 		map.put("areaList", areaList);	
 		
 		List<Filter> lFilters = new ArrayList<Filter>();
-		lFilters.add(new Filter("otype",OfficeUserType.PartyMembers.getValue()));
+		lFilters.add(new Filter("otypeEq",OfficeUserType.PartyMembers.getValue()));
 		List<OfficeUser> leadList=officeUserService.findAll(0,100,lFilters,new Sort("id"));	
 		map.put("leadList", leadList);	
 		
 		List<Filter> oFilters = new ArrayList<Filter>();
-		oFilters.add(new Filter("otype",OfficeUserType.None.getValue()));
+		oFilters.add(new Filter("otypeGt",OfficeUserType.PartyMembers.getValue()));
 		List<OfficeUser> officeList=officeUserService.findAll(0,100,oFilters,new Sort("id"));	
 		map.put("officeList", officeList);	
 		

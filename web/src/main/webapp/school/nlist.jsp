@@ -18,6 +18,7 @@
      <li><a href="${pageContext.request.contextPath}/county/nlist" class="hover">县域登记</a></li>
      <li><a href="${pageContext.request.contextPath}/ouser/nlist">联络员登记</a></li> 
      <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li> 
+     <li><a href="${pageContext.request.contextPath}/firstnet/plist">网格管理</a></li> 
     </ul>
     <div class="tab_select_box3 ClearFix"	>
     <h3 class="title_jiandu_font" style="border-bottom:none;">县域登记<a href="${pageContext.request.contextPath}/school/nsave?id=0" class="add_tianji_keshi">添加学校+</a></h3>
@@ -29,9 +30,9 @@
      </ul> 
      <div class="box_tabls">
           <div class="r prev_next" style="margin:10px;">
-                    	<a href="${pageContext.request.contextPath}/school/nlist?page=${requestScope.prePage}">上一页</a>
-                        <span>${requestScope.currentPage}/${requestScope.pageCount}</span>
-                        <a href="${pageContext.request.contextPath}/school/nlist?page=${requestScope.nextPage}">下一页</a>
+                    	<a href="${pageContext.request.contextPath}/school/nlist?page=${requestScope.schoolPage.prePage}">上一页</a>
+                        <span>${requestScope.schoolPage.currentPage}/${requestScope.schoolPage.pageCount}</span>
+                        <a href="${pageContext.request.contextPath}/school/nlist?page=${requestScope.schoolPage.nextPage}">下一页</a>
                     </div>
             <!--学校-->
             <div class="forem_box_set1 tabse_se">                

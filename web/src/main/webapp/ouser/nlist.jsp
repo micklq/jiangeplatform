@@ -17,7 +17,8 @@
         <li><a href="${pageContext.request.contextPath}/org/nlist">科室管理</a></li>
         <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
         <li><a href="${pageContext.request.contextPath}/ouser/nlist" class="hover">联络员登记</a></li>     
-        <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li>     
+        <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li>   
+        <li><a href="${pageContext.request.contextPath}/firstnet/plist">网格管理</a></li>   
     </ul>
     <div class="tab_select_box3 ClearFix">
         <h3 class="title_jiandu_font" style="border-bottom:none;">联络员管理<a href="${pageContext.request.contextPath}/ouser/nsave?id=0" class="add_tianji_keshi">添加人员+</a></h3>

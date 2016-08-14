@@ -15,34 +15,33 @@
     <div class="content_right2">
     	<div class="content_left_con4">
         	<ul class="table_add">
-             <li><a href="${pageContext.request.contextPath}/areamanage/nlist" class="hover">片区管理</a></li>
-             <li><a href="${pageContext.request.contextPath}/org/nlist">科室管理</a></li>
-             <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
-             <li><a href="${pageContext.request.contextPath}/ouser/nlist">联络员登记</a></li> 
-             <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li> 
-             <li><a href="${pageContext.request.contextPath}/firstnet/plist">网格管理</a></li> 
+            <li><a href="${pageContext.request.contextPath}/areamanage/nlist">片区管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/org/nlist">科室管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
+            <li><a href="${pageContext.request.contextPath}/ouser/nlist">联络员登记</a></li>  
+            <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/firstnet/plist" class="hover">网格管理</a></li> 
             </ul>
             <div class="tab_select_box3 ClearFix"	>
-            	<h3 class="title_jiandu_font">片区维护</h3>
+            	<h3 class="title_jiandu_font">一级网络维护</h3>
                 <div class="forem_box_set">
                 <form id="updatefm" method="post" novalidate>
                     <table cellpadding="0" cellspacing="0" class="tab_padding_t">
+                    <tr>
+                         <td align="right">名称：</td>
+                         <td> 
+                         <input type="hidden" name="id"  id="id" value="${requestScope.fnet.id}" />                              
+                         <input type="text" name="name" class="easyui-validatebox w220" required="true" value="${requestScope.fnet.name}" >
+                         </td>
+                        </tr>                 
                         <tr>
-                            <td align="right">片区名称：</td>
-                            <td>
-                            <input type="hidden" name="id"  id="id" value="${requestScope.area.id}" />
-                            <input type="text" name="name" class="easyui-validatebox w220" required="true" value="${requestScope.area.name}" />
-                            </td>
-                        </tr>                        
-                        <tr>
-                         <td align="right">联络点：</td>
+                         <td align="right">责任人：</td>
                          <td>                               
-                         <select id="contactpointId" class="easyui-combobox easyui-validatebox" name="contactpointId" required="true" style="width:220px">
-				             <c:forEach items="${countyList}" var="item" >
+                         <select id="officeid" class="easyui-combobox easyui-validatebox" name="officeid" required="true" style="width:220px">
+				             <c:forEach items="${officeList}" var="item" >
 				             <option value="${item.id}">${item.name}</option>
 				             </c:forEach>
-				          </select>                                       
-                                
+				          </select> 
                             </td>
                         </tr>
                         <tr>
@@ -57,20 +56,19 @@
     </div>
 </div>
 <script type="text/javascript">
-
-$("#contactpointId").val("${requestScope.area.contactpointId}")
+$("#officeid").val("${requestScope.fnet.officeid}");
 function back(){
-	location.href="areamanage/nlist";
+	location.href="${pageContext.request.contextPath}/firstnet/plist";
 }
 function save(){
 	var url;
 	if($("#id").val()>0)
 	{
-		url="areamanage/update";	
+		url="${pageContext.request.contextPath}/firstnet/update";	
 	}
 	else
 	{
-		url="areamanage/create";	
+		url="${pageContext.request.contextPath}/firstnet/create";	
 	}
 	$.ajax({
             url: url,
@@ -82,7 +80,7 @@ function save(){
             },
             success: function (result){
                 if (result[ "success"]== true){  
-                	location.href="areamanage/nlist";                    
+                	location.href="${pageContext.request.contextPath}/firstnet/plist";                    
                 } else {
                 	showMessage( "错误提示",result["result"],3000);
                 }

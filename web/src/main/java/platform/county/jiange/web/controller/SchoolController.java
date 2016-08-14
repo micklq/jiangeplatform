@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import platform.county.jiange.model.entity.Village;
 import platform.county.jiange.model.Filter;
+import platform.county.jiange.model.entity.CaringPeople;
 import platform.county.jiange.model.entity.County;
+import platform.county.jiange.model.entity.FirstNetwork;
 import platform.county.jiange.model.entity.OfficeUser;
 import platform.county.jiange.model.entity.OrgPost;
 import platform.county.jiange.model.entity.Organization;
@@ -30,6 +32,7 @@ import platform.county.jiange.service.VillageService;
 import platform.county.jiange.service.CountyService;
 import platform.county.jiange.service.cache.JedisService;
 import platform.county.jiange.service.SchoolService;
+import platform.county.jiange.webcomn.PageInfo;
 import platform.county.jiange.webcomn.RespBody;
 import platform.county.jiange.webcomn.controller.CRUDController;
 
@@ -97,55 +100,11 @@ public class SchoolController extends CRUDController<School, Long> {
 	
 	@RequestMapping("nlist")
 	public String nlist(@RequestParam(value="page", required=false, defaultValue="1") Integer page,ModelMap model){
-		
-		int dataCount = (int)schoolService.count();		
-		int dataPage = (int) (dataCount/12);
-		if(dataCount%12==0){
-			dataPage= dataPage-1; //分页整除 减一 以下再加一
-		}
-		int pageCount = dataPage+1;	
-		
-		if(page<=0)
-		{
-			page = 1;
-		}	
-		if(page>=pageCount){
-			page=pageCount;
-		}
-		int prePage=((page-1)>0)?(page-1):1;
-		int nextPage=((page+1)>pageCount)?pageCount:(page+1);
-		
-		Pageable pr = new PageRequest(page, 12, new Sort(Direction.DESC,"id"));
-        Page<School> list = schoolService.findAll(pr, null); 
-        List<School> rlist = new ArrayList<School>();
-        if(list!=null&& list.getSize()>0)
-        {        	
-        	 rlist = list.getContent();
-        } 
-        for(School o: rlist){	  
-	    	   
-	    	   if(o.getIssun()==1){
-	    		   o.setIssuntext("是");
-	    	   } 
-	    	   else {
-	    		   o.setIssuntext("否");
-	    	   }
-	    	   if(o.getCountyid()!=null&&o.getCountyid()>0){
-	    		   
-	    		   County item = countyService.find(o.getCountyid());
-		    	   if(item!=null){
-		    		   o.setCountyname(item.getName());  
-		    	   }
-	    		  
-	    	   }  	    	   
-	    	   
-	    	   
-	       }
-        model.addAttribute("prePage", prePage);
-        model.addAttribute("nextPage", nextPage);
-        model.addAttribute("currentPage", page);	
-        model.addAttribute("pageCount", pageCount);	
-		model.put("schoolList", rlist);	
+				
+		PageInfo schoolPage = getSchoolPageInfo(page);
+		List<School> rlist = getSchoolList(page);
+		model.addAttribute("schoolPage", schoolPage);
+		model.put("schoolList", rlist);			
 		return "school/nlist";
 	}
 	
@@ -165,7 +124,64 @@ public class SchoolController extends CRUDController<School, Long> {
 		map.put("countyList", list);
 		
 		return "school/nsave";
-	}	
+	}
+	
+	private PageInfo getSchoolPageInfo(Integer page) {
+
+		PageInfo pageInfo = new PageInfo();
+		int dataCount = (int) schoolService.count(); // 添加过滤
+		
+		int dataPage = (int) (dataCount / 12);
+		if (dataCount % 12 == 0) {
+			dataPage = dataPage - 1; // 分页整除 减一 以下再加一
+		}
+		int pageCount = dataPage + 1;
+
+		if (page <= 0) {
+			page = 1;
+		}
+		if (page >= pageCount) {
+			page = pageCount;
+		}
+		pageInfo.setDataCount(dataCount);
+		pageInfo.setPrePage(((page - 1) > 0) ? (page - 1) : 1);
+		pageInfo.setNextPage(((page + 1) > pageCount) ? pageCount : (page + 1));
+		pageInfo.setCurrentPage(page);
+		pageInfo.setPageCount(pageCount);
+		return pageInfo;
+	}
+
+	private List<School> getSchoolList(Integer page) {
+
+		List<Filter> filters = new ArrayList<Filter>();		
+		
+		Pageable pr = new PageRequest(page, 12, new Sort(Direction.DESC, "id"));
+		Page<School> list = schoolService.findAll(pr, filters);
+		List<School> rlist = new ArrayList<School>();
+		if (list != null && list.getSize() > 0) {
+			rlist = list.getContent();
+		}
+		for(School o: rlist){	  
+	    	   
+	    	   if(o.getIssun()==1){
+	    		   o.setIssuntext("是");
+	    	   } 
+	    	   else {
+	    		   o.setIssuntext("否");
+	    	   }
+	    	   if(o.getCountyid()!=null&&o.getCountyid()>0){
+	    		   
+	    		   County item = countyService.find(o.getCountyid());
+		    	   if(item!=null){
+		    		   o.setCountyname(item.getName());  
+		    	   }
+	    		  
+	    	   }  	    	   
+	    	   
+	    	   
+	       }
+		return rlist;
+	}
 	
 
 }

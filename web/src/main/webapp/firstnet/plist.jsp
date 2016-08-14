@@ -15,56 +15,53 @@
     <ul class="table_add">    
      <li><a href="${pageContext.request.contextPath}/areamanage/nlist">片区管理</a></li>
      <li><a href="${pageContext.request.contextPath}/org/nlist">科室管理</a></li>
-     <li><a href="${pageContext.request.contextPath}/county/nlist" class="hover">县域登记</a></li>
+     <li><a href="${pageContext.request.contextPath}/county/nlist">县域登记</a></li>
      <li><a href="${pageContext.request.contextPath}/ouser/nlist">联络员登记</a></li>  
      <li><a href="${pageContext.request.contextPath}/cpschedule/nlist">日程管理</a></li> 
-     <li><a href="${pageContext.request.contextPath}/firstnet/plist">网格管理</a></li> 
+     <li><a href="${pageContext.request.contextPath}/firstnet/plist" class="hover">网格管理</a></li> 
     </ul>
     <div class="tab_select_box3 ClearFix">
-        <h3 class="title_jiandu_font" style="border-bottom:none;">县域登记<a href="${pageContext.request.contextPath}/county/nsave?id=0" class="add_tianji_keshi">添加乡镇+</a></h3>
+        <h3 class="title_jiandu_font" style="border-bottom:none;">日程管理<a href="${pageContext.request.contextPath}/firstnet/nsave?id=0" class="add_tianji_keshi">添加+</a></h3>
         <ul class="tab_nav_sfs">
-        	<li><a class="hover" href="${pageContext.request.contextPath}/county/nlist">乡镇</a></li>
-            <li><a href="${pageContext.request.contextPath}/village/nlist?type=0">村庄</a></li>
-            <li><a href="${pageContext.request.contextPath}/village/nlist?type=1">社区</a></li>
-            <li><a href="${pageContext.request.contextPath}/school/nlist">学校</a></li>            
+        	<li><a class="hover" href="${pageContext.request.contextPath}/firstnet/plist">一级网络</a></li>
+            <li><a href="${pageContext.request.contextPath}/twonet/plist">二级网络</a></li> 
+            <li><a href="${pageContext.request.contextPath}/threenet/plist">三级网络</a></li>                                
         </ul>
         <div class="box_tabls">
           <div class="r prev_next" style="margin:10px;">
-                    	<a href="${pageContext.request.contextPath}/county/nlist?page=${requestScope.prePage}">上一页</a>
-                        <span>${requestScope.currentPage}/${requestScope.pageCount}</span>
-                        <a href="${pageContext.request.contextPath}/county/nlist?page=${requestScope.nextPage}">下一页</a>
-                    </div>
-            <!--乡镇-->
+            <a href="${pageContext.request.contextPath}/firstnet/plist?page=${requestScope.fnetPage.prePage}">上一页</a>
+            <span>${requestScope.fnetPage.currentPage}/${requestScope.fnetPage.pageCount}</span>
+            <a href="${pageContext.request.contextPath}/firstnet/plist?page=${requestScope.fnetPage.nextPage}">下一页</a>
+          </div>
+            <!--一级网格-->
             <div class="forem_box_set1 tabse_se">                
                 <table cellpadding="0" cellspacing="0" class="tab_padding_t1">
-                    <tr>
-                        <!-- <th><input type="checkbox" ></th> -->
-                        <th>乡镇Id</th>          
-                        <th>乡镇名称</th>    
-                        <th>乡镇描述</th> 
+                    <tr>                        
+                        <th>ID</th>          
+                        <th>名称</th>    
+                        <th>责任人</th>                          
                         <th>操作</th>
                     </tr>
-                    <c:forEach items="${countyList}" var="p">                  
-                    <tr>
-                        <%-- <td><input type="checkbox" value="${p.id}"></td> --%>
+                    <c:forEach items="${fnetList}" var="p">                  
+                    <tr>                        
                         <td>${p.id}</td>
-                        <td>${p.name}</td>                       
-                        <td>${p.description}</td>   
+                        <td>${p.name}</td> 
+                        <td>${p.officeName}</td>  
                         <td>
-                        <a href="${pageContext.request.contextPath}/county/nsave?id=${p.id}">修改 </a>
+                        <a href="${pageContext.request.contextPath}/firstnet/nsave?id=${p.id}">修改 </a>
                         <a href="javascript:void(0);" onclick="del('${p.id}')">删除</a>
                         </td>
                     </tr>  
                     </c:forEach> 
                 </table>
             </div>
-            <!--乡镇-->
+            <!--一级网格-->
         </div>
     </div>
 </div>	
 <script type="text/javascript">
 function del(id){
-	var url="${pageContext.request.contextPath}/county/delete?id="+id;	
+	var url="${pageContext.request.contextPath}/firstnet/delete?id="+id;	
 	 if(confirm("确定要删除当前数据吗？"))
 	 {
 		 $.ajax({
@@ -73,7 +70,7 @@ function del(id){
 	            dataType: "json",            
 	            success: function (result){
 	                if (result[ "success"]== true){  
-	                	location.href="${pageContext.request.contextPath}/county/nlist";                    
+	                	location.href="${pageContext.request.contextPath}/firstnet/plist";                    
 	                } else {
 	                	showMessage( "错误提示",result["result"],3000);
 	                }
