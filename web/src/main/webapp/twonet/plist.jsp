@@ -21,7 +21,7 @@
      <li><a href="${pageContext.request.contextPath}/firstnet/plist" class="hover">网格管理</a></li> 
     </ul>
     <div class="tab_select_box3 ClearFix">
-        <h3 class="title_jiandu_font" style="border-bottom:none;">日程管理<a href="${pageContext.request.contextPath}/wsschedule/nsave?id=0" class="add_tianji_keshi">添加工作站+</a></h3>
+        <h3 class="title_jiandu_font" style="border-bottom:none;">日程管理<a href="${pageContext.request.contextPath}/twonet/nsave?id=0" class="add_tianji_keshi">添加+</a></h3>
         <ul class="tab_nav_sfs">
         	<li><a href="${pageContext.request.contextPath}/firstnet/plist">一级网络</a></li>
             <li><a class="hover" href="${pageContext.request.contextPath}/twonet/plist">二级网络</a></li> 
